@@ -15,13 +15,7 @@ function App() {
    <Navbar/>
    <AllRoutes/>
    <Footer/> 
-   {/* <Form/>
-  {/* <MultiStepForm/> */}
-   {/* <SignupForm/> */}
-   
-   <SignupsForms/>
-
-   
+  
     </>
   );
 }
