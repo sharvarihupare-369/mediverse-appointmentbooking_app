@@ -1,10 +1,8 @@
 import React from 'react'
 import {Flex , HStack, Image , Box , Text } from '@chakra-ui/react'
-import logo from '../Assets/Mediverse (3).png'
 import logo1 from '../Assets/Mediverse (12).png'
 import { ColorModeSwitcher } from '../ColorModeSwitcher'
 import { Input } from '@chakra-ui/react'
-import { FaMobileAlt, FaSearch } from 'react-icons/fa'
 import { Search2Icon } from '@chakra-ui/icons'
 import 'animate.css';
 
