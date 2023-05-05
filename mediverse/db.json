@@ -12,14 +12,7 @@
       "lastName" : "",
       "email" : "",
       "password" : "",
-      "confirmPassword" : "",
-      "age" : null,
-      "mobileNum" : 0,
-      "gender" : "",
-      "address1" : "",
-      "city" : "",
-      "state" : "",
-      "country" : ""
+      "confirmpassword" : ""
     }
   ],
   "doctors": [
@@ -35,7 +28,7 @@
     },
     {
       "name": "Dr.Vikrant Mittal",
-      "image": "https://img.freepik.com/free-photo/portrait-young-male-doctor_171337-1492.jpg?w=1060&t=st=1683099659~exp=1683100259~hmac=7fec1916279d6691574d0a393ab74a469c1318cb9342549b227dff5e883d29f0",
+      "image": "https://img.freepik.com/free-photo/portrait-smiling-handsome-male-doctor-man_171337-5055.jpg",
       "specialist": "Cardiologist",
       "experience": "7yrs",
       "price": 2000,

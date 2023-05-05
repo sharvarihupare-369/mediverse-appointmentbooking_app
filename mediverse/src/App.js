@@ -7,6 +7,7 @@ import Navbar2 from './components/Navbar2';
 import Footer from './components/Footer';
 import './App.css'
 import SignupsForms from './components/SignupsForms';
+import BookAppointForm from './components/BookAppointForm';
 
 function App() {
   return (
@@ -14,14 +15,9 @@ function App() {
    <Navbar2/>
    <Navbar/>
    <AllRoutes/>
+  
    <Footer/> 
-   {/* <Form/>
-  {/* <MultiStepForm/> */}
-   {/* <SignupForm/> */}
-   
-   <SignupsForms/>
-
-   
+  
     </>
   );
 }

@@ -252,41 +252,61 @@ interface NavItem {
 
 const NAV_ITEMS: Array<NavItem> = [
   {
-    label: 'Inspiration',
+    label: 'Home',
+    href: '/'
+  },
+  {
+    label: 'Doctors',
+    href : "/doctors",
     children: [
       {
-        label: 'Explore Design Work',
-        subLabel: 'Trending Design to inspire you',
-        href: '#',
+        label: 'Cardiologist',
+        // subLabel: 'Find your dream design job',
+        href: '/doctors',
       },
       {
-        label: 'New & Noteworthy',
-        subLabel: 'Up-and-coming Designers',
-        href: '#',
+        label: 'Neurologist',
+        // subLabel: 'An exclusive list for contract work',
+        href: '/doctors',
+      },
+      {
+        label: 'Gynecologist',
+        // subLabel: 'An exclusive list for contract work',
+        href: '/doctors',
+      },
+      {
+        label: 'Gastroenterology',
+        // subLabel: 'An exclusive list for contract work',
+        href: '/doctors',
+      },
+      {
+        label: 'Dermatologist',
+        // subLabel: 'An exclusive list for contract work',
+        href: '/doctors',
+      },
+      {
+        label: 'Orthopedics',
+        // subLabel: 'An exclusive list for contract work',
+        href: '/doctors',
+      },
+      {
+        label: 'General Medicine',
+        // subLabel: 'An exclusive list for contract work',
+        href: '/doctors',
+      },
+      {
+        label: 'Pulmonologist',
+        // subLabel: 'An exclusive list for contract work',
+        href: '/doctors',
       },
     ],
   },
   {
-    label: 'Find Work',
-    children: [
-      {
-        label: 'Job Board',
-        subLabel: 'Find your dream design job',
-        href: '#',
-      },
-      {
-        label: 'Freelance Projects',
-        subLabel: 'An exclusive list for contract work',
-        href: '#',
-      },
-    ],
+    label: 'Contact',
+    href: '/contact',
   },
   {
-    label: 'Learn Design',
-    href: '#',
-  },
-  {
-    label: 'Hire Designers',
-    href: '#',
+    label: 'About Us',
+    href: '/about',
   },
 ];
