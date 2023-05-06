@@ -15,28 +15,30 @@ import {
   Link,
   Select,
   Container,
+  useToast
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import axios from 'axios';
 
-// const initState = {
-//   firstName: '',
-//   lastName: '',
-//   email: '',
-//   password: '',
-//   confirmPassword: '',
-// };
+const initState = {
+  firstName: '',
+  lastName: '',
+  phonenumber : null,
+  email: '',
+  password: '',
+  confirmPassword: '',
+};
 
 export default function SignupsForms() {
   const [showPassword, setShowPassword] = useState(false);
-  // const [formdata, setFormdata] = useState(initState);
-  const [firstName,setFirstName] = useState('')
-  const [lastName,setLastName] = useState('')
-  const [email,setEmail] = useState('')
-  const [password,setPassword] = useState('')
-  const [confirmpassword,setConfirmpassword] = useState('')
-
+  const [formdata, setFormdata] = useState(initState);
+  // const [firstName,setFirstName] = useState('')
+  // const [lastName,setLastName] = useState('')
+  // const [email,setEmail] = useState('')
+  // const [password,setPassword] = useState('')
+  // const [confirmpassword,setConfirmpassword] = useState('')
+  const toast = useToast()
   // console.log(formdata.firstName)
   // const userDetails = {
   //   firstName : firstName,
@@ -46,37 +48,117 @@ export default function SignupsForms() {
   //   confirmpassword : confirmpassword
   // }
 
-  // const handleChange = e => {
-  //   // let {name,type,value} = e.target
-  //   // let names = name
-  //   // let val = type==="number" ? Number(value) : value
-  //   setFormdata({ ...formdata, [e.target.name]: e.target.value });
-  // }; 
+  const {firstName,lastName,email,phonenumber,password,confirmPassword} = formdata
 
-  const fetchPostData = (userDetails) => {
-     const userDetail= axios.post(`http://localhost:3000/register`,userDetails)
+  const handleChange = e => {
+    setFormdata({ ...formdata, [e.target.name]: e.target.value });
+  }; 
+
+  const fetchPostData = (userData) => {
+     const userDetail= axios.post(`http://localhost:3000/signup`,userData)
      userDetail.then((res)=>console.log(res)).catch((err)=>console.log(err ))
-    //  console.log(userDetail);
-    //  .then((res)=>console.log(res)).catch((err)=>console.log(err))
+
   }
 
 
-  const handleSubmit = e => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    const userDetails = {
-      firstName : firstName,
-      lastName : lastName,
-      email : email,
-      password : password,
-      confirmpassword : confirmpassword
+    // fetchPostData();
+     if(!firstName || !lastName || !phonenumber || !email || !password){
+      toast({
+        title: 'Registration Failed',
+        description: "All fields are required",
+        status: 'warning',
+        duration: 4000,
+        isClosable: true,
+        position: 'top',
+      })
+      return
+     }
+
+     if(phonenumber.toString().length !== 10){
+      toast({
+        title: 'Correct details Required!',
+        description: "Please fill the valid phone number!",
+        status: 'warning',
+        duration: 4000,
+        isClosable: true,
+        position: 'top',
+      })
+      return
+     }
+     if (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(email)) {
+
+    } else {
+      toast({
+        title: 'Correct details Required!',
+        description: "Please fill the valid Email!",
+        status: 'warning',
+        duration: 4000,
+        isClosable: true,
+        position: 'top',
+      })
+      return
+      };
+
+      let userData = {
+        firstName,
+        lastName,
+        email,
+        password,
+        phonenumber
+      }
+      let res = false;
+       const data = await axios.get(`http://localhost:3000/signup`).then((res) => res.data)
+       if(data.length > 0){
+            data.forEach(el=>{
+              if(el.email == userData.email){
+                res = true
+              }
+            })
+       }else{
+        fetchPostData(userData)
+        toast({
+          title: 'User Registered Successfully',
+          description: "Please log in to continue.",
+          status: 'success',
+          duration: 4000,
+          isClosable: true,
+          position: 'top',
+        })
+        return
+       }
+       if(!res){
+        fetchPostData(userData)
+        toast({
+          title: 'User Registered Successfully',
+          description: "Please log in to continue.",
+          status: 'success',
+          duration: 4000,
+          isClosable: true,
+          position: 'top',
+        })
+        return
+       }
+
+      //  (check &&   toast({
+      //   title: 'User Already Registered',
+      //   description: "Please log in to continue.",
+      //   status: 'error',
+      //   duration: 4000,
+      //   isClosable: true,
+      //   position: 'top',
+      // })
+
+      // return
     }
-    fetchPostData(userDetails);
-  };
+
+  
 
 
   return (
     <>
-    <Container maxW={'750'}>
+    {/* <Container maxW={'750'}> */}
       <form onSubmit={handleSubmit}>
         <Flex
           minH={'100vh'}
@@ -102,12 +184,12 @@ export default function SignupsForms() {
               <Stack spacing={4}>
                 <HStack>
                   <Box>
-                    <FormControl isRequired>
+                    <FormControl >
                       <FormLabel>First Name</FormLabel>
                       <Input
-                        onChange={(e)=>setFirstName(e.target.value)}
+                        onChange={handleChange}
                         name="firstName"
-                        value={firstName}
+                        value={formdata.firstName}
                         type="text"
                         />
                     </FormControl>
@@ -116,31 +198,40 @@ export default function SignupsForms() {
                     <FormControl>
                       <FormLabel>Last Name</FormLabel>
                       <Input
-                        onChange={(e)=>setLastName(e.target.value)}
+                        onChange={handleChange}
                         name="lastName"
-                        value={lastName}
+                        value={formdata.lastName}
                         type="text"
                       />
                     </FormControl>
                   </Box>
                 </HStack>
-                <FormControl isRequired>
-                  <FormLabel>Email address</FormLabel>
+                <FormControl >
+                  <FormLabel>Phone Number</FormLabel>
                   <Input
-                    onChange={(e)=>setEmail(e.target.value)}
-                    name="email"
-                    type="email"
-                    value={email}
+                    onChange={handleChange}
+                    name="phonenumber"
+                    type="number"
+                    value={formdata.phonenumber}
                   />
                 </FormControl>
-                <FormControl isRequired>
+                <FormControl >
+                  <FormLabel>Email address</FormLabel>
+                  <Input
+                    onChange={handleChange}
+                    name="email"
+                    type="email"
+                    value={formdata.email}
+                  />
+                </FormControl>
+                <FormControl >
                   <FormLabel>Password</FormLabel>
                   <InputGroup>
                     <Input
                       type={showPassword ? 'text' : 'password'}
                       name="password"
-                      value={password}
-                      onChange={(e)=>setPassword(e.target.value)}
+                      value={formdata.password}
+                      onChange={handleChange}
                     />
                     <InputRightElement h={'full'}>
                       <Button
@@ -154,14 +245,14 @@ export default function SignupsForms() {
                     </InputRightElement>
                   </InputGroup>
                 </FormControl>
-                <FormControl isRequired>
+                <FormControl >
                   <FormLabel>Confirm Password</FormLabel>
                   <InputGroup>
                     <Input
                       type={showPassword ? 'text' : 'password'}
-                      value={confirmpassword}
+                      value={formdata.confirmPassword}
                       name="confirmPassword"
-                      onChange={(e)=>setConfirmpassword(e.target.value)}
+                      onChange={handleChange}
                       />
                     <InputRightElement h={'full'}>
                       <Button
@@ -180,10 +271,10 @@ export default function SignupsForms() {
                     type="submit"
                     loadingText="Submitting"
                     size="lg"
-                    bg={'blue.400'}
                     color={'white'}
+                    bg={'#222566'}
                     _hover={{
-                      bg: 'blue.500',
+                      bg: '#3879E9',
                     }}
                     >
                     Sign up
@@ -199,7 +290,7 @@ export default function SignupsForms() {
           </Stack>
         </Flex>
       </form>
-    </Container>
+    {/* </Container> */}
    </>
   );
 }

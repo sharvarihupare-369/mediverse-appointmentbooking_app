@@ -1,18 +1,35 @@
 {
   "admin": [
     {
+      "id": 1,
       "email": "sharvari@gmail.com",
       "password": "admin@123"
     }
   ],
-  "register" : [
+  "signup": [
     {
-     
-      "firstName" : "",
-      "lastName" : "",
-      "email" : "",
-      "password" : "",
-      "confirmpassword" : ""
+      "id": 1,
+      "firstName": "",
+      "lastName": "",
+      "phonenumber" : null,
+       "email": "",
+       "password": "",
+      "confirmPassword": ""
+    },
+    {
+      "email": "sharvarihupare15@gmail.com",
+      "password": "1233423",
+      "firstName": "Sharvari",
+      "lastName": "Hupare",
+      "id": 2
+    },
+    {
+      "firstName": "Vinayak",
+      "lastName": "Hupare",
+      "email": "vinayakhupare10@gmail.com",
+      "password": "vinayak123",
+      "confirmPassword": "vinayak123",
+      "id": 3
     }
   ],
   "doctors": [
@@ -58,7 +75,7 @@
     },
     {
       "name": "Dr.Truluck",
-      "image": "https://img.freepik.com/premium-psd/confident-young-doctor-posing_1459-5943.jpg?w=2000",
+      "image": "https://img.freepik.com/free-photo/doctor-with-co-workers-analyzing-x-ray_1098-581.jpg?w=1060&t=st=1683342774~exp=1683343374~hmac=d19cd98196731d343445ce6c0d33e2895b711ee9f545efb7a637f6a8058c6a5b",
       "specialist": "Cardiologist",
       "experience": "10yrs",
       "price": 5000,
@@ -88,7 +105,7 @@
     },
     {
       "name": "Dr.Thomas Joiin",
-      "image": "https://jooinn.com/images/specialist-doctor.jpg",
+      "image": "https://ucmscdn.healthgrades.com/12/14/e71c531f414485bf0b3565483a4f/image-doctor.jpg",
       "specialist": "Cardiologist",
       "experience": "25yrs",
       "price": 8000,
@@ -118,7 +135,7 @@
     },
     {
       "name": "Dr.Daniel Gillies",
-      "image": "https://img.freepik.com/free-photo/covid-coronavirus-outbreak-healthcare-workers-pandemic-concept-enthusiastic-smiling-doctor-physi_1258-84624.jpg?w=2000",
+      "image": "https://img.freepik.com/free-photo/hospital-healthcare-workers-covid-19-treatment-concept-young-doctor-scrubs-making-daily-errands-clinic-listening-patient-symptoms-look-camera-professional-physician-curing-diseases_1258-57233.jpg?size=626&ext=jpg&ga=GA1.2.205266656.1682997817&semt=ais",
       "specialist": "Neurologist",
       "experience": "10yrs",
       "price": 4000,
@@ -188,7 +205,7 @@
     },
     {
       "name": "Dr.Asha Ayyagari Adams",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2tGk-3ws1g6SadVaWgaGON8vL5glOv2MNxw&usqp=CAU",
+      "image": "https://media.istockphoto.com/id/1346711310/photo/portrait-of-smiling-female-doctor-wearing-uniform-standing.jpg?b=1&s=170667a&w=0&k=20&c=MP4Uz3zLO_2i8WGmcYaQgz8mOh2IrRjf5byFhqKRroY=",
       "specialist": "Neurologist",
       "experience": "6yrs",
       "price": 1600,
@@ -218,7 +235,7 @@
     },
     {
       "name": "Dr.Aditi Sharma",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-sLcqZ29y4cgyZb3yRAvlGnJrQpG-ZuXKmA&usqp=CAU",
+      "image": "https://media.istockphoto.com/id/1305293444/photo/smiling-indian-young-female-doctor-standing-isolated-over-white-background-stock-photo.jpg?s=612x612&w=0&k=20&c=PTz7aFwXJtbNXe-V56IPbGDB4OtfBOwX0jb_aUSrUN8=",
       "specialist": "Gynecologist",
       "experience": "5yrs",
       "price": 1000,
@@ -228,7 +245,7 @@
     },
     {
       "name": "Dr.Amita Jain",
-      "image": "https://img.freepik.com/free-photo/female-doctor-hospital-with-stethoscope_23-2148827776.jpg",
+      "image": "https://media.istockphoto.com/id/1189304032/photo/doctor-holding-digital-tablet-at-meeting-room.jpg?s=612x612&w=0&k=20&c=RtQn8w_vhzGYbflSa1B5ea9Ji70O8wHpSgGBSh0anUg=",
       "specialist": "Gynecologist",
       "experience": "8yrs",
       "price": 2000,
@@ -238,7 +255,7 @@
     },
     {
       "name": "Dr.Aparna Jha",
-      "image": "https://static6.depositphotos.com/1144472/631/i/950/depositphotos_6310225-stock-photo-young-happy-smiling-female-doctor.jpg",
+      "image": "https://media.istockphoto.com/id/1367507209/photo/portrait-of-indian-female-doctor-stock-photo.jpg?s=612x612&w=0&k=20&c=mI-MPGA_bHBLK9D77v8shYOZdI7Pqnlh2_xJE00tUHM=",
       "specialist": "Gynecologist",
       "experience": "4yrs",
       "price": 1000,
@@ -248,7 +265,7 @@
     },
     {
       "name": "Dr.Anusha Raina",
-      "image": "https://cdn.askapollo.com/live/images/doctors/obstetrics-and-gynecology/dr-anshu-raina-obstetrics-and-gynecology-in-noida..png",
+      "image": "https://media.istockphoto.com/id/1293927732/photo/confident-female-doctor.jpg?s=612x612&w=0&k=20&c=de18bkRv9kncTFc2nji_6goXd2Z4lUAvp0fuRqYlxnk=",
       "specialist": "Gynecologist",
       "experience": "15yrs",
       "price": 4000,
@@ -298,9 +315,9 @@
     },
     {
       "name": "Dr.Abraham Oomman",
-      "image": "https://img.lovepik.com/free-png/20211110/lovepik-image-of-elderly-male-doctors-png-image_400763379_wh1200.png",
+      "image": "https://thumbs.dreamstime.com/b/indian-male-doctor-clipboard-stethoscope-medicine-profession-healthcare-concept-smiling-white-coat-over-grey-138207484.jpg",
       "specialist": "Gynecologist",
-      "experience": "22yrs",
+      "experience": "15yrs",
       "price": 5000,
       "patients": 4000,
       "rating": 5,
@@ -348,7 +365,7 @@
     },
     {
       "name": "Dr.Amisha Patel",
-      "image": "https://media.istockphoto.com/id/177839842/photo/smiling-doctor-woman-with-arms-crossed.jpg?s=612x612&w=0&k=20&c=infRKfdmTMS8WYFZHF_GPuBpLPszyyXhiP5Er9a50jA=",
+      "image": "https://img.freepik.com/free-photo/content-young-female-doctor-posing-camera_1262-18213.jpg",
       "specialist": "Gastroenterology",
       "experience": "5yrs",
       "price": 1000,
@@ -358,7 +375,7 @@
     },
     {
       "name": "Dr.Rajasekhar Reddy",
-      "image": "https://prodaphstorage.blob.core.windows.net/doctors/84fc1ec1-a692-480c-8c38-28c5803426db.jpg",
+      "image": "https://thumbs.dreamstime.com/b/african-male-doctor-happy-tablet-computer-34481166.jpg",
       "specialist": "Gastroenterology",
       "experience": "16yrs",
       "price": 4000,
@@ -378,7 +395,7 @@
     },
     {
       "name": "Dr.Saurabh Misra",
-      "image": "https://thumbs.dreamstime.com/b/young-handsome-male-doctor-file-white-lab-coat-holding-patients-his-hands-looking-down-camera-isolated-32273946.jpg",
+      "image": "https://i.pinimg.com/736x/50/89/73/508973ffe734c67376691718e39e33a5.jpg",
       "specialist": "Gastroenterology",
       "experience": "8yrs",
       "price": 3500,
@@ -388,7 +405,7 @@
     },
     {
       "name": "Dr.Michael Williams",
-      "image": "https://media.istockphoto.com/id/138205019/photo/happy-healthcare-practitioner.jpg?s=612x612&w=0&k=20&c=b8kUyVtmZeW8MeLHcDsJfqqF0XiFBjq6tgBQZC7G0f0=",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTk0verXU3tWojoUFvWIQHkhw_lhqSIaRYw1A&usqp=CAU",
       "specialist": "Gastroenterology",
       "experience": "28yrs",
       "price": 5000,
@@ -418,7 +435,7 @@
     },
     {
       "name": "Dr.Aishwarya Malladi",
-      "image": "https://img.freepik.com/premium-photo/medical-concept-indian-beautiful-female-doctor-white-coat-with-stethoscope-waist-up-medical-student-woman-hospital-worker-looking-camera-smiling-studio-blue-background_185696-621.jpg",
+      "image": "https://t4.ftcdn.net/jpg/02/20/30/45/360_F_220304581_3BRbk3UhoYrcVlt72fdBcVRHBtHAKuvD.jpg",
       "specialist": "Dermatologist",
       "experience": "3yrs",
       "price": 500,
@@ -438,7 +455,7 @@
     },
     {
       "name": "Dr.Robert Half",
-      "image": "https://i.pinimg.com/originals/2d/e3/ed/2de3ed00dbedd7cd8928457b77c9c0df.jpg",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpI-pZA_fq-y1kzCfsKPSO-MQGFxjqYjkB1A&usqp=CAU",
       "specialist": "Dermatologist",
       "experience": "5yrs",
       "price": 2000,
@@ -458,7 +475,7 @@
     },
     {
       "name": "Dr.Atul Taneja",
-      "image": "https://st3.depositphotos.com/1003570/13247/i/600/depositphotos_132475708-stock-photo-african-american-black-male-doctor.jpg",
+      "image": "https://t3.ftcdn.net/jpg/03/00/22/02/360_F_300220248_VKEd3QKx31kzqHcwZfnGmWKZLYTjf8R0.jpg",
       "specialist": "Dermatologist",
       "experience": "10yrs",
       "price": 2000,
@@ -468,7 +485,7 @@
     },
     {
       "name": "Dr.D M Mahajan",
-      "image": "https://media.istockphoto.com/id/177373093/photo/indian-male-doctor.jpg?s=612x612&w=0&k=20&c=5FkfKdCYERkAg65cQtdqeO_D0JMv6vrEdPw3mX1Lkfg=",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgVD6QtO9LgBxPsj11FT3hPmvPiBdM-vv_gw&usqp=CAU",
       "specialist": "Dermatologist",
       "experience": "25yrs",
       "price": 2000,
@@ -518,7 +535,7 @@
     },
     {
       "name": "Dr.Mohan Krishna",
-      "image": "https://cdn.askapollo.com/live/images/doctors/orthopaedics/dr-abheek-kar-orthopaedics-in-kolkata.png",
+      "image": "https://as2.ftcdn.net/v2/jpg/02/69/98/99/1000_F_269989951_9Gf7PWaRtrpm2EochO3D5WVn22sFZbNZ.jpg",
       "specialist": "Orthopedics",
       "experience": "10yrs",
       "price": 3000,
@@ -578,7 +595,7 @@
     },
     {
       "name": "Dr.Karthik ",
-      "image": "https://img.freepik.com/free-photo/doctor-with-his-arms-crossed-white-background_1368-5790.jpg?size=626&ext=jpg&ga=GA1.1.205266656.1682997817&semt=sph",
+      "image": "https://us.123rf.com/450wm/peopleimages12/peopleimages122209/peopleimages12220928765/191682678-portrait-of-a-male-nurse-with-his-team-in-the-background-in-the-hospital-happy-smiling-and.jpg?ver=6",
       "specialist": "Orthopedics",
       "experience": "11yrs",
       "price": 1300,
@@ -735,6 +752,620 @@
       "patients": 2000,
       "rating": 4.5,
       "id": 72
+    }
+  ],
+  "cardiology": [
+    {
+      "id": 1,
+      "name": "Dr.Jonathan McDaniel",
+      "image": "https://img.freepik.com/free-photo/smiling-doctor-with-strethoscope-isolated-grey_651396-974.jpg?size=626&ext=jpg&ga=GA1.1.205266656.1682997817&semt=sph",
+      "specialist": "Cardiologist",
+      "experience": "6yrs",
+      "price_starts_from": 4000,
+      "patients": 500,
+      "rating": 3.9
+    },
+    {
+      "name": "Dr.Vikrant Mittal",
+      "image": "https://img.freepik.com/free-photo/portrait-smiling-handsome-male-doctor-man_171337-5055.jpg",
+      "specialist": "Cardiologist",
+      "experience": "7yrs",
+      "price": 2000,
+      "patients": 800,
+      "rating": 4.2,
+      "id": 2
+    },
+    {
+      "name": "Dr.A K Bardhan",
+      "image": "https://img.freepik.com/free-photo/smiling-touching-arms-crossed-room-hospital_1134-799.jpg",
+      "specialist": "Cardiologist",
+      "experience": "14yrs",
+      "price": 5000,
+      "patients": 3000,
+      "rating": 5,
+      "id": 3
+    },
+    {
+      "name": "Dr.Anuradha Sridhar",
+      "image": "https://thumbs.dreamstime.com/b/smiling-female-doctor-holding-medical-records-lab-coat-her-office-clipboard-looking-camera-56673035.jpg",
+      "specialist": "Cardiologist",
+      "experience": "4",
+      "price": 1500,
+      "patients": 500,
+      "rating": 4,
+      "id": 4
+    },
+    {
+      "name": "Dr.Truluck",
+      "image": "https://img.freepik.com/free-photo/doctor-with-co-workers-analyzing-x-ray_1098-581.jpg?w=1060&t=st=1683342774~exp=1683343374~hmac=d19cd98196731d343445ce6c0d33e2895b711ee9f545efb7a637f6a8058c6a5b",
+      "specialist": "Cardiologist",
+      "experience": "10yrs",
+      "price": 5000,
+      "patients": 1000,
+      "rating": 3.5,
+      "id": 5
+    },
+    {
+      "name": "Dr.Lindsey Butterfield",
+      "image": "https://st2.depositphotos.com/3889193/7657/i/600/depositphotos_76570869-stock-photo-confident-female-doctor-posing-in.jpg",
+      "specialist": "Cardiologist",
+      "experience": "6yrs",
+      "price": 3000,
+      "patients": 900,
+      "rating": 3.9,
+      "id": 6
+    },
+    {
+      "name": "Dr.James Christopher",
+      "image": "https://media.istockphoto.com/id/1327024466/photo/portrait-of-male-doctor-in-white-coat-and-stethoscope-standing-in-clinic-hall.jpg?s=612x612&w=0&k=20&c=49wqOwwuonk9f8NACL7M_5RosqQPFwJ8-dpmeo9AvQw=",
+      "specialist": "Cardiologist",
+      "experience": "12yrs",
+      "price": 5000,
+      "patients": 2000,
+      "rating": 4.6,
+      "id": 7
+    },
+    {
+      "name": "Dr.Thomas Joiin",
+      "image": "https://ucmscdn.healthgrades.com/12/14/e71c531f414485bf0b3565483a4f/image-doctor.jpg",
+      "specialist": "Cardiologist",
+      "experience": "25yrs",
+      "price": 8000,
+      "patients": 6000,
+      "rating": 5,
+      "id": 8
+    },
+    {
+      "name": "Dr.Akhilesh Jain",
+      "image": "https://st.depositphotos.com/1518767/4293/i/600/depositphotos_42930187-stock-photo-smiling-male-doctor-with-arms.jpg",
+      "specialist": "Cardiologist",
+      "experience": "15yrs",
+      "price": 6000,
+      "patients": 3400,
+      "rating": 4.9,
+      "id": 9
+    },
+    {
+      "name": "Dr.Ajay Bahadur",
+      "image": "https://prodaphstorage.blob.core.windows.net/doctors/7f1275c6-8a89-4d47-a104-b4de5a334097.jpg",
+      "specialist": "Cardiologist",
+      "experience": "19yrs",
+      "price": 6500,
+      "patients": 3600,
+      "rating": 5,
+      "id": 10
+    }
+  
+  ],
+  "neurology": [
+    {
+      "name": "Dr.Daniel Gillies",
+      "image": "https://img.freepik.com/free-photo/hospital-healthcare-workers-covid-19-treatment-concept-young-doctor-scrubs-making-daily-errands-clinic-listening-patient-symptoms-look-camera-professional-physician-curing-diseases_1258-57233.jpg?size=626&ext=jpg&ga=GA1.2.205266656.1682997817&semt=ais",
+      "specialist": "Neurologist",
+      "experience": "10yrs",
+      "price": 4000,
+      "patients": 1200,
+      "rating": 4,
+      "id": 1
+    },
+    {
+      "name": "Dr.Anoop Kohli",
+      "image": "https://img.freepik.com/premium-photo/portrait-confident-young-medical-doctor-white-background-holding-tablet-his-hands_168410-2338.jpg?w=2000",
+      "specialist": "Neurologist",
+      "experience": "4yrs",
+      "price": 3000,
+      "patients": 600,
+      "rating": 3.4,
+      "id": 2
+    },
+    {
+      "name": "Dr.Parul Cial",
+      "image": "https://img.freepik.com/free-photo/pleased-young-female-doctor-wearing-medical-robe-stethoscope-around-neck-standing-with-closed-posture_409827-254.jpg",
+      "specialist": "Neurologist",
+      "experience": "9yrs",
+      "price": 3000,
+      "patients": 900,
+      "rating": 4.2,
+      "id": 3
+    },
+    {
+      "name": "Dr.Johnathan Treat Paine",
+      "image": "https://img.freepik.com/premium-photo/black-male-doctor_53419-7575.jpg",
+      "specialist": "Neurologist",
+      "experience": "7yrs",
+      "price": 3000,
+      "patients": 600,
+      "rating": 3.9,
+      "id": 4
+    },
+    {
+      "name": "Dr.Asha Ayyagari Adams",
+      "image": "https://media.istockphoto.com/id/1346711310/photo/portrait-of-smiling-female-doctor-wearing-uniform-standing.jpg?b=1&s=170667a&w=0&k=20&c=MP4Uz3zLO_2i8WGmcYaQgz8mOh2IrRjf5byFhqKRroY=",
+      "specialist": "Neurologist",
+      "experience": "6yrs",
+      "price": 1600,
+      "patients": 700,
+      "rating": 4.2,
+      "id": 5
+    },
+    {
+      "name": "Dr.Bose",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnXnvNwLtoaGVhn3TiDycUiYyij4MfyAB14A&usqp=CAU",
+      "specialist": "Neurologist",
+      "experience": "20yrs",
+      "price": 5000,
+      "patients": 2000,
+      "rating": 5,
+      "id": 6
+    },
+    {
+      "name": "Dr.Rajesh Reddy",
+      "image": "https://img.freepik.com/free-photo/middle-aged-handsome-doctor-hospital_1303-23565.jpg",
+      "specialist": "Neurologist",
+      "experience": "15yrs",
+      "price": 7000,
+      "patients": 2000,
+      "rating": 5,
+      "id": 7
+    },
+    {
+      "name": "Dr.Joseph Mark",
+      "image": "https://img.freepik.com/free-photo/portrait-smiling-handsome-male-doctor-man_171337-5055.jpg",
+      "specialist": "Neurologist",
+      "experience": "6yrs",
+      "price": 1500,
+      "patients": 500,
+      "rating": 4.1,
+      "id": 8
+    },
+    {
+      "name": "Dr.John",
+      "image": "https://img.freepik.com/premium-photo/portrait-young-asian-male-doctor-blue-background_296537-5811.jpg",
+      "specialist": "Neurologist",
+      "experience": "7yrs",
+      "price": 3000,
+      "patients": 1000,
+      "rating": 4.5,
+      "id": 9
+    },
+    {
+      "name": "Dr.ANUSHA D",
+      "image": "https://img.freepik.com/free-photo/doctor-work_144627-40423.jpg",
+      "specialist": "Neurologist",
+      "experience": "5yrs",
+      "price": 1000,
+      "patients": 500,
+      "rating": 4.2,
+      "id": 10
+    }
+  ],
+  "Gynecologist" : [
+    {
+      "name": "Dr.Aditi Sharma",
+      "image": "https://media.istockphoto.com/id/1305293444/photo/smiling-indian-young-female-doctor-standing-isolated-over-white-background-stock-photo.jpg?s=612x612&w=0&k=20&c=PTz7aFwXJtbNXe-V56IPbGDB4OtfBOwX0jb_aUSrUN8=",
+      "specialist": "Gynecologist",
+      "experience": "5yrs",
+      "price": 1000,
+      "patients": 300,
+      "rating": 4,
+      "id": 1
+    },
+    {
+      "name": "Dr.Amita Jain",
+      "image": "https://media.istockphoto.com/id/1189304032/photo/doctor-holding-digital-tablet-at-meeting-room.jpg?s=612x612&w=0&k=20&c=RtQn8w_vhzGYbflSa1B5ea9Ji70O8wHpSgGBSh0anUg=",
+      "specialist": "Gynecologist",
+      "experience": "8yrs",
+      "price": 2000,
+      "patients": 600,
+      "rating": 4.3,
+      "id": 2
+    },
+    {
+      "name": "Dr.Aparna Jha",
+      "image": "https://media.istockphoto.com/id/1367507209/photo/portrait-of-indian-female-doctor-stock-photo.jpg?s=612x612&w=0&k=20&c=mI-MPGA_bHBLK9D77v8shYOZdI7Pqnlh2_xJE00tUHM=",
+      "specialist": "Gynecologist",
+      "experience": "4yrs",
+      "price": 1000,
+      "patients": 200,
+      "rating": 3.8,
+      "id": 3
+    },
+    {
+      "name": "Dr.Anusha Raina",
+      "image": "https://media.istockphoto.com/id/1293927732/photo/confident-female-doctor.jpg?s=612x612&w=0&k=20&c=de18bkRv9kncTFc2nji_6goXd2Z4lUAvp0fuRqYlxnk=",
+      "specialist": "Gynecologist",
+      "experience": "15yrs",
+      "price": 4000,
+      "patients": 3000,
+      "rating": 4.8,
+      "id": 4
+    },
+    {
+      "name": "Dr.Amudha Hari",
+      "image": "https://cdn.askapollo.com/live/images/doctors/obstetrics-and-gynecology/dr-amudha-hari-obstetrics-and-gynecology-in-chennai.png",
+      "specialist": "Gynecologist",
+      "experience": "28yrs",
+      "price": 5000,
+      "patients": 6000,
+      "rating": 5,
+      "id": 5
+    },
+    {
+      "name": "Dr.Lisa",
+      "image": "https://media.istockphoto.com/id/1356785682/photo/successful-female-doctor-isolated-on-grey-background.jpg?b=1&s=170667a&w=0&k=20&c=S5RuwSQXe0Qi6p27rjpH8pHBffPjGyyGEE2L0KiIknE=",
+      "specialist": "Gynecologist",
+      "experience": "12yrs",
+      "price": 4000,
+      "patients": 3000,
+      "rating": 4.2,
+      "id": 6
+    },
+    {
+      "name": "Dr.Patrick Doe",
+      "image": "https://media.istockphoto.com/id/1161336374/photo/portrait-of-confident-young-medical-doctor-on-blue-background.jpg?s=612x612&w=0&k=20&c=zaa4MFrk76JzFKvn5AcYpsD8S0ePYYX_5wtuugCD3ig=",
+      "specialist": "Gynecologist",
+      "experience": "6yrs",
+      "price": 3000,
+      "patients": 500,
+      "rating": 4,
+      "id": 7
+    },
+    {
+      "name": "Dr.Sarah",
+      "image": "https://img.freepik.com/free-photo/isolated-shotof-happy-successful-mature-senior-physician-wearing-medical-unifrom-stethoscope-having-cheerful-facial-expression-smiling-broadly-keeping-arms-crossed-chest_343059-2254.jpg",
+      "specialist": "Gynecologist",
+      "experience": "20yrs",
+      "price": 5000,
+      "patients": 7000,
+      "rating": 5,
+      "id": 8
+    },
+    {
+      "name": "Dr.Abraham Oomman",
+      "image": "https://thumbs.dreamstime.com/b/indian-male-doctor-clipboard-stethoscope-medicine-profession-healthcare-concept-smiling-white-coat-over-grey-138207484.jpg",
+      "specialist": "Gynecologist",
+      "experience": "15yrs",
+      "price": 5000,
+      "patients": 4000,
+      "rating": 5,
+      "id": 9
+    },
+    {
+      "name": "Dr.Maria ",
+      "image": "https://thumbs.dreamstime.com/b/portrait-shot-attractive-female-doctor-folded-arms-looking-camera-standing-isolated-white-background-middle-aged-181498722.jpg",
+      "specialist": "Gynecologist",
+      "experience": "8yrs",
+      "price": 4000,
+      "patients": 2000,
+      "rating": 4.3,
+      "id": 10
+    }
+  ],
+  "gastroenterology" : [
+    {
+      "name": "Dr.Aditya Shah",
+      "image": "https://media.istockphoto.com/id/1342708859/photo/portrait-of-a-male-doctor.jpg?b=1&s=170667a&w=0&k=20&c=dGL6uWE5oZAhJOkQ4sIIM832e_MnQ_ZHldhk885ndv8=",
+      "specialist": "Gastroenterology",
+      "experience": "6yrs",
+      "price": 2000,
+      "patients": 600,
+      "rating": 4.1,
+      "id": 1
+    },
+    {
+      "name": "Dr.C R K Prasad",
+      "image": "https://thumbs.dreamstime.com/b/confident-male-doctor-standing-hands-folded-29666067.jpg",
+      "specialist": "Gastroenterology",
+      "experience": "22yrs",
+      "price": 4000,
+      "patients": 3000,
+      "rating": 5,
+      "id": 2
+    },
+    {
+      "name": "Dr.D K Bhargava",
+      "image": "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bWFsZSUyMGRvY3RvcnxlbnwwfHwwfHw%3D&w=1000&q=80",
+      "specialist": "Gastroenterology",
+      "experience": "7yrs",
+      "price": 2000,
+      "patients": 600,
+      "rating": 3.9,
+      "id": 3
+    },
+    {
+      "name": "Dr.Amisha Patel",
+      "image": "https://img.freepik.com/free-photo/content-young-female-doctor-posing-camera_1262-18213.jpg",
+      "specialist": "Gastroenterology",
+      "experience": "5yrs",
+      "price": 1000,
+      "patients": 500,
+      "rating": 3.9,
+      "id": 4
+    },
+    {
+      "name": "Dr.Rajasekhar Reddy",
+      "image": "https://thumbs.dreamstime.com/b/african-male-doctor-happy-tablet-computer-34481166.jpg",
+      "specialist": "Gastroenterology",
+      "experience": "16yrs",
+      "price": 4000,
+      "patients": 2000,
+      "rating": 4.5,
+      "id": 5
+    },
+    {
+      "name": "Dr.Revathy Shanmugam",
+      "image": "https://us.123rf.com/450wm/kadettmann/kadettmann2003/kadettmann200300039/141852946-portrait-of-hispanic-nurse-looking-at-camera.jpg?ver=6",
+      "specialist": "Gastroenterology",
+      "experience": "6yrs",
+      "price": 1000,
+      "patients": 400,
+      "rating": 4,
+      "id": 6
+    },
+    {
+      "name": "Dr.Saurabh Misra",
+      "image": "https://i.pinimg.com/736x/50/89/73/508973ffe734c67376691718e39e33a5.jpg",
+      "specialist": "Gastroenterology",
+      "experience": "8yrs",
+      "price": 3500,
+      "patients": 2000,
+      "rating": 4.3,
+      "id": 7
+    },
+    {
+      "name": "Dr.Michael Williams",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTk0verXU3tWojoUFvWIQHkhw_lhqSIaRYw1A&usqp=CAU",
+      "specialist": "Gastroenterology",
+      "experience": "28yrs",
+      "price": 5000,
+      "patients": 7000,
+      "rating": 5,
+      "id": 8
+    },
+    {
+      "name": "Dr.David",
+      "image": "https://us.123rf.com/450wm/opolja/opolja1904/opolja190400678/121991996-cheerful-mature-doctor-posing-and-smiling-at-camera-healthcare-and-medicine.jpg?ver=6",
+      "specialist": "Gastroenterology",
+      "experience": "20yrs",
+      "price": 4500,
+      "patients": 5000,
+      "rating": 4.8,
+      "id": 9
+    },
+    {
+      "name": "Dr.Lara ",
+      "image": "https://media.istockphoto.com/id/830343990/photo/female-doctor-standing-in-hospital-corridor.jpg?s=612x612&w=0&k=20&c=KtH4dXAjhhPAC-yqPt4N78IiatHLrL-uVVeLNzt28Bs=",
+      "specialist": "Gastroenterology",
+      "experience": "3yrs",
+      "price": 1000,
+      "patients": 200,
+      "rating": 4.3,
+      "id": 10
+    }
+  ],
+  "dermatologist" : [
+    {
+      "name": "Dr.Aishwarya Malladi",
+      "image": "https://t4.ftcdn.net/jpg/02/20/30/45/360_F_220304581_3BRbk3UhoYrcVlt72fdBcVRHBtHAKuvD.jpg",
+      "specialist": "Dermatologist",
+      "experience": "3yrs",
+      "price": 500,
+      "patients": 300,
+      "rating": 4,
+      "id": 1
+    },
+    {
+      "name": "Dr.Nancy",
+      "image": "https://st3.depositphotos.com/4678277/18409/i/600/depositphotos_184092796-stock-photo-portrait-of-happy-smiling-confident.jpg",
+      "specialist": "Dermatologist",
+      "experience": "4yrs",
+      "price": 900,
+      "patients": 600,
+      "rating": 4.8,
+      "id": 2
+    },
+    {
+      "name": "Dr.Robert Half",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpI-pZA_fq-y1kzCfsKPSO-MQGFxjqYjkB1A&usqp=CAU",
+      "specialist": "Dermatologist",
+      "experience": "5yrs",
+      "price": 2000,
+      "patients": 700,
+      "rating": 4.9,
+      "id": 3
+    },
+    {
+      "name": "Dr.Antionetta Ashwini J",
+      "image": "https://img.freepik.com/free-photo/beautiful-young-female-doctor-looking-camera-office_1301-7781.jpg",
+      "specialist": "Dermatologist",
+      "experience": "3yrs",
+      "price": 1200,
+      "patients": 500,
+      "rating": 4.9,
+      "id": 4
+    },
+    {
+      "name": "Dr.Atul Taneja",
+      "image": "https://t3.ftcdn.net/jpg/03/00/22/02/360_F_300220248_VKEd3QKx31kzqHcwZfnGmWKZLYTjf8R0.jpg",
+      "specialist": "Dermatologist",
+      "experience": "10yrs",
+      "price": 2000,
+      "patients": 3000,
+      "rating": 5,
+      "id": 5
+    },
+    {
+      "name": "Dr.Elizebeth ",
+      "image": "https://img.freepik.com/free-photo/woman-doctor-white-uniform-standing-hall_1157-33391.jpg?size=626&ext=jpg&ga=GA1.2.205266656.1682997817&semt=ais",
+      "specialist": "Dermatologist",
+      "experience": "2yrs",
+      "price": 400,
+      "patients": 200,
+      "rating": 3.5,
+      "id": 6
+    },
+    {
+      "name": "Dr.Deepthi Motiram",
+      "image": "https://img.freepik.com/free-photo/portrait-doctor_144627-39389.jpg?w=1060&t=st=1683108513~exp=1683109113~hmac=b6fd93edffaff8176819c4d9a9c85c5ef3ac0f065cf6e27d845e92f0eaa91d2d",
+      "specialist": "Dermatologist",
+      "experience": "12yrs",
+      "price": 1000,
+      "patients": 2000,
+      "rating": 4.8,
+      "id": 7
+    },
+    {
+      "name": "Dr.Rebecca",
+      "image": "https://img.freepik.com/free-photo/young-woman-doctor-with-stethoscope-hospital_1303-20700.jpg?w=1060&t=st=1683108617~exp=1683109217~hmac=84ccc2ad480d19e5379b776f2aef0d723e7dd1eae1e95d81d687d22840b353ae",
+      "specialist": "Dermatologist",
+      "experience": "9yrs",
+      "price": 1100,
+      "patients": 600,
+      "rating": 4.7,
+      "id": 8
+    },
+    {
+      "name": "Dr.Shreya Jain",
+      "image": "https://img.freepik.com/premium-photo/portrait-beautiful-young-female-doctor-white-medical-jacket-isolated-white-background-brunette-woman-medic-crossed-hands-smiling-camera_533057-127.jpg?size=626&ext=jpg&ga=GA1.2.205266656.1682997817&semt=ais",
+      "specialist": "Dermatologist",
+      "experience": "4yrs",
+      "price": 700,
+      "patients": 400,
+      "rating": 3.9,
+      "id": 9
+    },
+    
+    {
+      "name": "Dr.D M Mahajan",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgVD6QtO9LgBxPsj11FT3hPmvPiBdM-vv_gw&usqp=CAU",
+      "specialist": "Dermatologist",
+      "experience": "25yrs",
+      "price": 2000,
+      "patients": 3000,
+      "rating": 5,
+      "id": 10
+    }
+  ],
+  "orthopedics" : [
+    {
+      "name": "Dr.Mohan Krishna",
+      "image": "https://as2.ftcdn.net/v2/jpg/02/69/98/99/1000_F_269989951_9Gf7PWaRtrpm2EochO3D5WVn22sFZbNZ.jpg",
+      "specialist": "Orthopedics",
+      "experience": "10yrs",
+      "price": 3000,
+      "patients": 600,
+      "rating": 3.9,
+      "id": 1
+    },
+    {
+      "name": "Dr.ABHAY AGARWAL",
+      "image": "https://media.istockphoto.com/id/1124684854/photo/portrait-of-indian-doctor.jpg?s=612x612&w=0&k=20&c=z07-F84erAbm8Z_sVJhLXdaJBfMFSiJjf_uaHg7Z3sY=",
+      "specialist": "Orthopedics",
+      "experience": "28yrs",
+      "price": 4000,
+      "patients": 3000,
+      "rating": 5,
+      "id": 2
+    },
+    {
+      "name": "Dr.Anil Bhatia",
+      "image": "https://media.istockphoto.com/id/1191718778/photo/modern-medicine-requires-the-assistance-of-modern-technology.jpg?s=612x612&w=0&k=20&c=32Ep5Ff3jR_OQcFcIP0G9BzObZ7ezykf-nGRe8CUBF4=",
+      "specialist": "Orthopedics",
+      "experience": "5yrs",
+      "price": 800,
+      "patients": 500,
+      "rating": 4,
+      "id": 3
+    },
+    {
+      "name": "Dr.Stephen",
+      "image": "https://img.freepik.com/free-photo/confident-attractive-male-doctor-wearing-white-lab-coat-while-standing-with-arms-crossed-against-turquoise-background_662251-1654.jpg",
+      "specialist": "Orthopedics",
+      "experience": "7yrs",
+      "price": 1500,
+      "patients": 800,
+      "rating": 4.3,
+      "id": 4
+    },
+    {
+      "name": "Dr.D K Das",
+      "image": "https://media.istockphoto.com/id/1346124900/photo/confident-successful-mature-doctor-at-hospital.jpg?b=1&s=170667a&w=0&k=20&c=vUq0J-LgD4FPEV1Ua_0NeQBcJ2xb8EjGe5fdcR1K2x0=",
+      "specialist": "Orthopedics",
+      "experience": "15yrs",
+      "price": 2000,
+      "patients": 3000,
+      "rating": 4.9,
+      "id": 5
+    },
+    {
+      "name": "Dr.K J Reddy",
+      "image": "https://img.freepik.com/premium-photo/portrait-cheerful-young-indian-man-doctor-posing-blue_116547-52436.jpg?size=626&ext=jpg&ga=GA1.1.205266656.1682997817&semt=sph",
+      "specialist": "Orthopedics",
+      "experience": "5yrs",
+      "price": 500,
+      "patients": 200,
+      "rating": 4.2,
+      "id": 6
+    },
+    {
+      "name": "Dr.Karthik ",
+      "image": "https://us.123rf.com/450wm/peopleimages12/peopleimages122209/peopleimages12220928765/191682678-portrait-of-a-male-nurse-with-his-team-in-the-background-in-the-hospital-happy-smiling-and.jpg?ver=6",
+      "specialist": "Orthopedics",
+      "experience": "11yrs",
+      "price": 1300,
+      "patients": 1500,
+      "rating": 4.8,
+      "id": 7
+    },
+    {
+      "name": "Dr.S R K Dikshith",
+      "image": "https://img.freepik.com/free-photo/young-handsome-physician-medical-robe-with-stethoscope_1303-17814.jpg?size=626&ext=jpg&ga=GA1.1.205266656.1682997817&semt=ais",
+      "specialist": "Orthopedics",
+      "experience": "8",
+      "price": 1000,
+      "patients": 1000,
+      "rating": 4.4,
+      "id": 8
+    },
+    {
+      "name": "Dr.Sameer Chaudhari",
+      "image": "https://img.freepik.com/premium-photo/young-handsome-indian-man-doctor-against-white-background_251136-4363.jpg?size=626&ext=jpg&ga=GA1.1.205266656.1682997817&semt=ais",
+      "specialist": "Orthopedics",
+      "experience": "16yrs",
+      "price": 2000,
+      "patients": 4000,
+      "rating": 5,
+      "id": 9
+    },
+    {
+      "name": "Dr.Gautam Tawari",
+      "image": "https://img.freepik.com/premium-photo/studio-shot-young-handsome-indian-man-doctor-against-gray_251136-12627.jpg?size=626&ext=jpg&ga=GA1.1.205266656.1682997817&semt=ais",
+      "specialist": "Orthopedics",
+      "experience": "3yrs",
+      "price": 500,
+      "patients": 400,
+      "rating": 3.3,
+      "id": 10
     }
   ]
 }
