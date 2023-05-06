@@ -14,20 +14,58 @@ import {
   useColorModeValue,
   useBreakpointValue,
   useDisclosure,
+  Image,
+  HStack,
+  Input,
 } from '@chakra-ui/react';
+import logo1 from '../Assets/Mediverse (12).png';
+import { Search2Icon } from '@chakra-ui/icons';
+import 'animate.css';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { SearchContext } from '../Contexts/SearchContextProvider';
+import { useContext, useEffect, useState } from 'react';
 import {
   HamburgerIcon,
   CloseIcon,
   ChevronDownIcon,
   ChevronRightIcon,
 } from '@chakra-ui/icons';
+import { ColorModeSwitcher } from '../ColorModeSwitcher';
 
 export default function WithSubnavigation() {
+  const navigate = useNavigate();
+
+  const [inputVal, setInputVal] = useState('');
+  const [search,setSearch] = useState(false)
+  const { data, setData, setStatus } = useContext(SearchContext);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+
+
+
+
+  const handleSearch = val => {
+    if (val) {
+      setStatus(true);
+    }
+
+    axios
+      .get(`http://localhost:3000/doctors?q=${val}&_page=${page}&_limit=12`)
+      .then(res => {
+        console.log(res);
+        setData(res.data);
+      
+      })
+      .catch(err => console.log(err));
+  };
   const { isOpen, onToggle } = useDisclosure();
 
   return (
-    <Box>
+    <Box className="animate__animated animate__fadeInDown">
+    
       <Flex
+        alignItems={'center'}
         bg={useColorModeValue('white', 'gray.800')}
         color={useColorModeValue('gray.600', 'white')}
         minH={'60px'}
@@ -36,11 +74,14 @@ export default function WithSubnavigation() {
         borderBottom={1}
         borderStyle={'solid'}
         borderColor={useColorModeValue('gray.200', 'gray.900')}
-        align={'center'}>
+        align={'center'}
+      >
         <Flex
+          alignItems={'center'}
           flex={{ base: 1, md: 'auto' }}
           ml={{ base: -2 }}
-          display={{ base: 'flex', md: 'none' }}>
+          display={{ base: 'flex', md: 'none' }}
+        >
           <IconButton
             onClick={onToggle}
             icon={
@@ -50,30 +91,74 @@ export default function WithSubnavigation() {
             aria-label={'Toggle Navigation'}
           />
         </Flex>
-        <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-          {/* <Text
+        <Flex alignItems={'center'} flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
+          <Image
+            src={logo1}
+            w={{
+              base: '100px',
+              sm: '100px',
+              md: '100px',
+              lg: '150px',
+              xl: '150px',
+              '2xl': '100px',
+            }}
+            objectFit={'cover'}
+            borderRadius={'5px'}
             textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
             fontFamily={'heading'}
-            color={useColorModeValue('gray.800', 'white')}>
-            Logo
-          </Text> */}
+            color={useColorModeValue('gray.800', 'white')}
+          />
+
+          {/* </Text> */}
 
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
             <DesktopNav />
           </Flex>
         </Flex>
 
+        <Flex
+          w="50%"
+          mr="300px"
+          flex={{ base: 1 }}
+          justify={{ base: 'center', md: 'start' }}
+        >
+          <Box
+            display={{
+              base: 'none',
+              sm: 'none',
+              md: 'none',
+              lg: 'flex',
+              xl: 'flex',
+              '2xl': 'flex',
+            }}
+            w="70%"
+          >
+            <Input
+              placeholder="Search here something..."
+              w="90%"
+              borderRadius={'20px'}
+              onChange={e => handleSearch(e.target.value)}
+            />
+            <Box position={'relative'} right="40px" top="5px">
+              {/* <FaSearch   /> */}
+              <Search2Icon />
+            </Box>
+          </Box>
+        </Flex>
+
         <Stack
           flex={{ base: 1, md: 0 }}
           justify={'flex-end'}
           direction={'row'}
-          spacing={6}>
+          spacing={6}
+        >
           <Button
             as={'a'}
             fontSize={'sm'}
             fontWeight={400}
             variant={'link'}
-            href={'#'}>
+            href={'#'}
+          >
             Sign In
           </Button>
           <Button
@@ -83,12 +168,14 @@ export default function WithSubnavigation() {
             fontWeight={600}
             color={'white'}
             bg={'#222566'}
-            href={'#'}
+            href={'/signup'}
             _hover={{
               bg: '#3879E9',
-            }}>
+            }}
+          >
             Sign Up
           </Button>
+          <ColorModeSwitcher />
         </Stack>
       </Flex>
 
@@ -106,7 +193,7 @@ const DesktopNav = () => {
 
   return (
     <Stack direction={'row'} spacing={4}>
-      {NAV_ITEMS.map((navItem) => (
+      {NAV_ITEMS.map(navItem => (
         <Box key={navItem.label}>
           <Popover trigger={'hover'} placement={'bottom-start'}>
             <PopoverTrigger>
@@ -119,7 +206,8 @@ const DesktopNav = () => {
                 _hover={{
                   textDecoration: 'none',
                   color: linkHoverColor,
-                }}>
+                }}
+              >
                 {navItem.label}
               </Link>
             </PopoverTrigger>
@@ -131,9 +219,10 @@ const DesktopNav = () => {
                 bg={popoverContentBgColor}
                 p={4}
                 rounded={'xl'}
-                minW={'sm'}>
+                minW={'sm'}
+              >
                 <Stack>
-                  {navItem.children.map((child) => (
+                  {navItem.children.map(child => (
                     <DesktopSubNav key={child.label} {...child} />
                   ))}
                 </Stack>
@@ -154,13 +243,15 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
       display={'block'}
       p={2}
       rounded={'md'}
-      _hover={{ bg: useColorModeValue('blue.50', 'blue.50') }}>
+      _hover={{ bg: useColorModeValue('blue.50', 'blue.50') }}
+    >
       <Stack direction={'row'} align={'center'}>
         <Box>
           <Text
             transition={'all .3s ease'}
             _groupHover={{ color: '#3879E9' }}
-            fontWeight={500}>
+            fontWeight={500}
+          >
             {label}
           </Text>
           <Text fontSize={'sm'}>{subLabel}</Text>
@@ -172,7 +263,8 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
           _groupHover={{ opacity: '100%', transform: 'translateX(0)' }}
           justify={'flex-end'}
           align={'center'}
-          flex={1}>
+          flex={1}
+        >
           <Icon color={'#3879E9'} w={5} h={5} as={ChevronRightIcon} />
         </Flex>
       </Stack>
@@ -185,8 +277,9 @@ const MobileNav = () => {
     <Stack
       bg={useColorModeValue('white', 'gray.800')}
       p={4}
-      display={{ md: 'none' }}>
-      {NAV_ITEMS.map((navItem) => (
+      display={{ md: 'none' }}
+    >
+      {NAV_ITEMS.map(navItem => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
     </Stack>
@@ -206,10 +299,12 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
         align={'center'}
         _hover={{
           textDecoration: 'none',
-        }}>
+        }}
+      >
         <Text
           fontWeight={600}
-          color={useColorModeValue('gray.600', 'gray.200')}>
+          color={useColorModeValue('gray.600', 'gray.200')}
+        >
           {label}
         </Text>
         {children && (
@@ -230,9 +325,10 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
           borderLeft={1}
           borderStyle={'solid'}
           borderColor={useColorModeValue('gray.200', 'gray.700')}
-          align={'start'}>
+          align={'start'}
+        >
           {children &&
-            children.map((child) => (
+            children.map(child => (
               <Link key={child.label} py={2} href={child.href}>
                 {child.label}
               </Link>
@@ -253,41 +349,46 @@ interface NavItem {
 const NAV_ITEMS: Array<NavItem> = [
   {
     label: 'Home',
-    href: '/'
+    href: '/',
   },
   {
     label: 'Doctors',
-    href : "/doctors",
+    href: '/doctors',
     children: [
       {
-        label: 'Cardiologist',
+        label: 'All',
         // subLabel: 'Find your dream design job',
         href: '/doctors',
       },
       {
+        label: 'Cardiologist',
+        // subLabel: 'Find your dream design job',
+        href: '/cardiology',
+      },
+      {
         label: 'Neurologist',
         // subLabel: 'An exclusive list for contract work',
-        href: '/doctors',
+        href: '/neurology',
       },
       {
         label: 'Gynecologist',
         // subLabel: 'An exclusive list for contract work',
-        href: '/doctors',
+        href: '/gynecologist',
       },
       {
         label: 'Gastroenterology',
         // subLabel: 'An exclusive list for contract work',
-        href: '/doctors',
+        href: '/gastroenterology',
       },
       {
         label: 'Dermatologist',
         // subLabel: 'An exclusive list for contract work',
-        href: '/doctors',
+        href: '/dermatologist',
       },
       {
         label: 'Orthopedics',
         // subLabel: 'An exclusive list for contract work',
-        href: '/doctors',
+        href: '/orthopedics',
       },
       {
         label: 'General Medicine',

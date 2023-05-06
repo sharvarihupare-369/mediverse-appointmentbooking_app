@@ -12,10 +12,10 @@ import BookAppointForm from './components/BookAppointForm';
 function App() {
   return (
     <>
-   <Navbar2/>
+    
+   {/* <Navbar2/> */}
    <Navbar/>
    <AllRoutes/>
-  
    <Footer/> 
   
     </>

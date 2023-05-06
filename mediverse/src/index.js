@@ -6,16 +6,21 @@ import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
 import { ChakraProvider ,theme } from '@chakra-ui/react';
 import { BrowserRouter } from 'react-router-dom';
+import SearchContextProvider from './Contexts/SearchContextProvider';
 
 const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
 
 root.render(
+
   <ChakraProvider theme={theme}>
+    <SearchContextProvider>
+
     <ColorModeScript />
     <BrowserRouter>
     <App />
     </BrowserRouter>
+    </SearchContextProvider>
     </ChakraProvider>
  
 );

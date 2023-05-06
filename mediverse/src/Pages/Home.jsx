@@ -8,18 +8,30 @@ import {
   Text,
   Flex,
 } from '@chakra-ui/react';
-import React from 'react';
+import React, { useContext } from 'react';
 import 'animate.css';
 import imag1 from '../Assets/vectorImage2.jpg';
 import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
-import { Form } from 'react-router-dom';
+import { Form, useNavigate } from 'react-router-dom';
 import SliderPro from '../components/SliderPro';
 import BookAppointForm from '../components/BookAppointForm';
-
+import { Link } from 'react-router-dom';
+import Doctors from './Doctors';
+import { SearchContext } from '../Contexts/SearchContextProvider';
 const Home = () => {
+
+  const navigate = useNavigate()
+
+  const {status} = useContext(SearchContext)
+
+
   return (
     <>
+    {
+      status ?  <Doctors/> : 
+      <Box>
+
       <Box
         bgImage="url('https://img.freepik.com/free-photo/young-professional-doctor-woman-physician-with-stethoscope-holding-digital-tablet-smiling-cam_1258-127422.jpg?w=1380&t=st=1683121920~exp=1683122520~hmac=8191b5cca491733f4d7775b9a4d3c420f30e2c74a3d9c03f29202bb91ba61e53')"
         //   backgroundPosition=""
@@ -73,64 +85,66 @@ const Home = () => {
           <BookAppointForm />
         </Box>
       </Box>
-      <Heading
+      <Box m="30px" p="20px">
+        <Heading
+          mt="30px"
           fontWeight={'500'}
           color={'#222566'}
           as="h1"
           size="xl"
           textAlign={'center'}
-        >    Our Excellence Centers
+        >
+          {' '}
+          Our Excellence Centers
         </Heading>
-      <Flex m="60px"   justifyContent={"space-around"}>
-        
-      
-        <Box w="200px" textAlign={'center'}>
-          <Image
-            borderRadius={'50%'}
-            src="https://img.freepik.com/premium-vector/medical-stethoscope-with-human-heart-health-care-medicine_284092-2696.jpg?size=626&ext=jpg&ga=GA1.2.205266656.1682997817&semt=ais"
-          />
-          <Heading size="sm" as="h4">
-            Cardiology
-          </Heading>
-        </Box>
-        <Box w="200px" textAlign={'center'}>
-          <Image
-            borderRadius={'50%'}
-            src="https://img.freepik.com/free-vector/human-nervous-system_53876-90443.jpg?size=626&ext=jpg&ga=GA1.1.205266656.1682997817&semt=ais"
-          />
-            <Heading mt='5px' size="sm" as="h4">
-            Neurology
-          </Heading>
-        </Box>
-        <Box w="220px" textAlign={'center'}>
-          <Image
-            borderRadius={'50%'}
-            src="https://img.freepik.com/free-vector/human-internal-organ-with-stomach_1308-108170.jpg?size=626&ext=jpg&ga=GA1.1.205266656.1682997817&semt=ais"
-          />
-          <Heading mt='5px' size="sm" as="h4">
-            GastronEnterology
-          </Heading>
-        </Box>
-        <Box w="230px" textAlign={'center'}>
-          <Image
-            borderRadius={'50%'}
-            src="https://img.freepik.com/free-vector/stethoscope-lungs-earth-globe_1308-126019.jpg?size=626&ext=jpg&ga=GA1.1.205266656.1682997817&semt=ais"
-          />
-          <Heading size="sm" as="h4">
-            Pulmonology
-          </Heading>
-        </Box>
-        <Box w="200px" textAlign={'center'}>
-          <Image
-            borderRadius={'50%'}
-            src="https://img.freepik.com/free-vector/anatomy-human-pelvis-white-background_1308-92151.jpg?size=626&ext=jpg&ga=GA1.1.205266656.1682997817&semt=ais"
-          />
-          <Heading size="sm" as="h4">
-            Orthopedics
-          </Heading>
-        </Box>
-
-      </Flex>
+        <Flex m="60px" cursor={'pointer'} justifyContent={'space-around'}>
+          <Box w="200px" textAlign={'center'} >
+            <Image       
+              borderRadius={'50%'}
+              src="https://img.freepik.com/premium-vector/medical-stethoscope-with-human-heart-health-care-medicine_284092-2696.jpg?size=626&ext=jpg&ga=GA1.2.205266656.1682997817&semt=ais"
+            />
+            <Heading size="sm" as="h4" >
+              <Link to='/cardiology'>Cardiology</Link>
+            </Heading>
+          </Box>
+          <Box w="200px" textAlign={'center'}>
+            <Image
+              borderRadius={'50%'}
+              src="https://img.freepik.com/free-vector/human-nervous-system_53876-90443.jpg?size=626&ext=jpg&ga=GA1.1.205266656.1682997817&semt=ais"
+            />
+            <Heading mt="5px" size="sm" as="h4">
+            <Link to='/neurology'>Neurology</Link> 
+            </Heading>
+          </Box>
+          <Box w="220px" textAlign={'center'}>
+            <Image
+              borderRadius={'50%'}
+              src="https://img.freepik.com/free-vector/human-internal-organ-with-stomach_1308-108170.jpg?size=626&ext=jpg&ga=GA1.1.205266656.1682997817&semt=ais"
+            />
+            <Heading mt="5px" size="sm" as="h4">
+              GastronEnterology
+            </Heading>
+          </Box>
+          <Box w="230px" textAlign={'center'}>
+            <Image
+              borderRadius={'50%'}
+              src="https://img.freepik.com/free-vector/stethoscope-lungs-earth-globe_1308-126019.jpg?size=626&ext=jpg&ga=GA1.1.205266656.1682997817&semt=ais"
+            />
+            <Heading size="sm" as="h4">
+              Pulmonology
+            </Heading>
+          </Box>
+          <Box w="200px" textAlign={'center'}>
+            <Image
+              borderRadius={'50%'}
+              src="https://img.freepik.com/free-vector/anatomy-human-pelvis-white-background_1308-92151.jpg?size=626&ext=jpg&ga=GA1.1.205266656.1682997817&semt=ais"
+            />
+            <Heading size="sm" as="h4">
+              Orthopedics
+            </Heading>
+          </Box>
+        </Flex>
+      </Box>
 
       <Box bgGradient="linear(to-r, #3879E9, #222566)">
         {/* <Image w="100%" src='https://img.freepik.com/free-vector/hospital-medicine-infographic-with-characters-physicians-working-hospital-caring-patients-fighting-viruses_1284-54255.jpg?w=1380&t=st=1683130927~exp=1683131527~hmac=4dc6c753903d6f170c654569ed18c17c652a2ad8d6dd2473821e3d63c8044fb6' /> */}
@@ -151,13 +165,51 @@ const Home = () => {
       </Box>
       <SliderPro />
 
+      <Box
+        backgroundImage={
+          "url('https://img.freepik.com/premium-photo/cardiologist-with-stethoscope-with-hand-protection-symbol-supports-realistic-red-heart-as-symbol-cardiovascular-disease-prevention-treatment-copy-space-high-quality-photo_297535-2981.jpg?w=1380')"
+        }
+        backgroundRepeat="no-repeat"
+        backgroundSize={{
+          base: 'cover',
+          sm: 'cover',
+          md: 'cover',
+          lg: 'cover',
+          xl: 'cover',
+          '2xl': 'cover',
+        }}
+        opacity={'0.7'}
+      >
+        <Container h="400px" maxW={'850px'}>
+          <Box>
+            <Heading>Cardiology</Heading>
+            <Text lineHeight={'34px'}>
+              The MEdiVerse Heart Institutes are regarded as one of the best
+              heart hospitals in India, performing a multitude of treatments and
+              procedures in cardiology and cardiothoracic surgery. The scorecard
+              shows an unmatched record of over 1,52,000 cardiac and
+              cardiothoracic surgeries. We have vast experience in the most
+              complicated coronary artery bypass surgery, surgery for all types
+              of valvular heart diseases, paediatric heart surgery, adult and
+              paediatric heart transplantation with success rates comparable to
+              international standards.
+            </Text>
+          </Box>
+        </Container>
+      </Box>
+
+
+
       <Box w="100%">
         <Image
           className="animate__animated  animate__backInUp"
           w="100%"
           src={imag1}
-        />
+          />
       </Box>
+      </Box>
+}
+
     </>
   );
 };
