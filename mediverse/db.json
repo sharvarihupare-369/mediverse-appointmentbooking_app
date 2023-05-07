@@ -11,9 +11,9 @@
       "id": 1,
       "firstName": "",
       "lastName": "",
-      "phonenumber" : null,
-       "email": "",
-       "password": "",
+      "phonenumber": null,
+      "email": "",
+      "password": "",
       "confirmPassword": ""
     },
     {
@@ -39,7 +39,7 @@
       "image": "https://img.freepik.com/free-photo/smiling-doctor-with-strethoscope-isolated-grey_651396-974.jpg?size=626&ext=jpg&ga=GA1.1.205266656.1682997817&semt=sph",
       "specialist": "Cardiologist",
       "experience": "6yrs",
-      "price_starts_from": 4000,
+      "price": 4000,
       "patients": 500,
       "rating": 3.9
     },
@@ -761,7 +761,7 @@
       "image": "https://img.freepik.com/free-photo/smiling-doctor-with-strethoscope-isolated-grey_651396-974.jpg?size=626&ext=jpg&ga=GA1.1.205266656.1682997817&semt=sph",
       "specialist": "Cardiologist",
       "experience": "6yrs",
-      "price_starts_from": 4000,
+      "price": 4000,
       "patients": 500,
       "rating": 3.9
     },
@@ -855,7 +855,6 @@
       "rating": 5,
       "id": 10
     }
-  
   ],
   "neurology": [
     {
@@ -959,7 +958,7 @@
       "id": 10
     }
   ],
-  "Gynecologist" : [
+  "Gynecologist": [
     {
       "name": "Dr.Aditi Sharma",
       "image": "https://media.istockphoto.com/id/1305293444/photo/smiling-indian-young-female-doctor-standing-isolated-over-white-background-stock-photo.jpg?s=612x612&w=0&k=20&c=PTz7aFwXJtbNXe-V56IPbGDB4OtfBOwX0jb_aUSrUN8=",
@@ -1061,7 +1060,7 @@
       "id": 10
     }
   ],
-  "gastroenterology" : [
+  "gastroenterology": [
     {
       "name": "Dr.Aditya Shah",
       "image": "https://media.istockphoto.com/id/1342708859/photo/portrait-of-a-male-doctor.jpg?b=1&s=170667a&w=0&k=20&c=dGL6uWE5oZAhJOkQ4sIIM832e_MnQ_ZHldhk885ndv8=",
@@ -1163,7 +1162,7 @@
       "id": 10
     }
   ],
-  "dermatologist" : [
+  "dermatologist": [
     {
       "name": "Dr.Aishwarya Malladi",
       "image": "https://t4.ftcdn.net/jpg/02/20/30/45/360_F_220304581_3BRbk3UhoYrcVlt72fdBcVRHBtHAKuvD.jpg",
@@ -1254,7 +1253,6 @@
       "rating": 3.9,
       "id": 9
     },
-    
     {
       "name": "Dr.D M Mahajan",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgVD6QtO9LgBxPsj11FT3hPmvPiBdM-vv_gw&usqp=CAU",
@@ -1266,7 +1264,7 @@
       "id": 10
     }
   ],
-  "orthopedics" : [
+  "orthopedics": [
     {
       "name": "Dr.Mohan Krishna",
       "image": "https://as2.ftcdn.net/v2/jpg/02/69/98/99/1000_F_269989951_9Gf7PWaRtrpm2EochO3D5WVn22sFZbNZ.jpg",
@@ -1366,6 +1364,51 @@
       "patients": 400,
       "rating": 3.3,
       "id": 10
+    }
+  ],
+  "pulmonologist": [
+    {
+      "name": "Dr.Ajay Keni",
+      "image": "https://img.freepik.com/premium-photo/confident-asian-male-doctor-isolated_46728-1452.jpg?size=626&ext=jpg&ga=GA1.1.205266656.1682997817&semt=ais",
+      "specialist": "Pulmonologist",
+      "experience": "30yrs",
+      "price": 1000,
+      "patients": 10000,
+      "rating": 5,
+      "id": 71
+    },
+    {
+      "name": "Dr.Bhargavi K",
+      "image": "https://img.freepik.com/premium-photo/confident-pretty-middle-aged-female-doctor_1262-10444.jpg?size=626&ext=jpg&ga=GA1.1.205266656.1682997817&semt=ais",
+      "specialist": "Pulmonologist",
+      "experience": "10yrs",
+      "price": 300,
+      "patients": 2000,
+      "rating": 4.5,
+      "id": 72
+    }
+  ],
+  "bookingappoint": [
+    {
+      "id": 1,
+      "name": "",
+      "phonenumber": null,
+      "email": "",
+      "message": ""
+    }
+  ],
+  "patients": [
+    {
+      "id": 1,
+      "name": "",
+      "age": null,
+      "phoneNum": null,
+      "gender": "",
+      "date": "",
+      "time": "",
+      "address": "",
+      "city": "",
+      "state": ""
     }
   ]
 }

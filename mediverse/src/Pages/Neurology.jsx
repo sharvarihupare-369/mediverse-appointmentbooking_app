@@ -6,6 +6,9 @@ import { useState,useEffect } from 'react';
 import axios from 'axios'
 import { SearchContext } from '../Contexts/SearchContextProvider';
 import CardsDoc from '../components/CardsDoc';
+import Buttons2 from '../components/Buttons2';
+import Loader from '../components/Loader';
+import Error from '../components/Errormsg';
 
 const Neurology = () => {
     // const [loading, setLoading] = useState(false);
@@ -13,12 +16,12 @@ const Neurology = () => {
     // const [Error, setError] = useState(false);
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
-    const {setData,data,setStatus,status,loading,setLoading,Error,setError} = useContext(SearchContext)
+    const {setData,data,setStatus,status,loading,setLoading,error,setError} = useContext(SearchContext)
   
     const fetchDoctorData = page => {
       setLoading(true);
       axios
-        .get(`http://localhost:3000/neurology?_page=${page}&_limit=6`)
+        .get(`http://localhost:8080/neurology?_page=${page}&_limit=6`)
         .then(res => {
           setData(res.data);
           let pages = res.headers['x-total-count'];
@@ -34,6 +37,17 @@ const Neurology = () => {
     useEffect(() => {
       fetchDoctorData(page);
     }, [page]);
+
+    if (loading) {
+      return (
+        <Loader/>
+      );
+    }
+  
+    if(error){
+      return <Error/>
+    }
+
   
   return (
     <>
@@ -55,32 +69,7 @@ const Neurology = () => {
           );
         })}
       </Grid>
-      <Box m="40px 5px" alignItems={"center"} display={'flex'} justifyContent={'center'} ga="5px">
-        <Button
-          color={'white'}
-          bg={'#222566'}
-          _hover={{
-            bg: '#3879E9',
-          }}
-          isDisabled={page === 1}
-          onClick={() => setPage(page - 1)}
-        >
-          PREV
-        </Button>
-        <Button>{page}</Button>
-      
-        <Button
-          color={'white'}
-          bg={'#222566'}
-          _hover={{
-            bg: '#3879E9',
-          }}
-          isDisabled={page === totalPages}
-          onClick={() => setPage(page + 1)}
-        >
-          NEXT
-        </Button>
-      </Box>
+     <Buttons2 page={page} setPage={setPage} totalPages={totalPages} />
     </>
   )
 }

@@ -7,10 +7,8 @@ import CardsDoc from '../components/CardsDoc';
 import { Box , Image, Input, Heading, Text, Button, Grid } from '@chakra-ui/react'
 import Buttons2 from '../components/Buttons2';
 import Loader from '../components/Loader';
-import Error from '../components/Errormsg'; 
-
-
-const Dermatologist = () => {
+import Error from '../components/Errormsg';
+const Pulmonologist = () => {
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
     const {
@@ -27,7 +25,7 @@ const Dermatologist = () => {
     const fetchDoctorData = page => {
       setLoading(true);
       axios
-        .get(`http://localhost:8080/dermatologist?_page=${page}&_limit=6`)
+        .get(`http://localhost:8080/pulmonologist?_page=${page}&_limit=6`)
         .then(res => {
           setData(res.data);
           let pages = res.headers['x-total-count'];
@@ -82,4 +80,4 @@ const Dermatologist = () => {
   )
 }
 
-export default Dermatologist
+export default Pulmonologist

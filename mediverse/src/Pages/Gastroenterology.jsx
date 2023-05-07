@@ -5,6 +5,9 @@ import axios from 'axios';
 import { SearchContext } from '../Contexts/SearchContextProvider';
 import CardsDoc from '../components/CardsDoc';
 import { Box , Image, Input, Heading, Text, Button, Grid } from '@chakra-ui/react'
+import Buttons2 from '../components/Buttons2';
+import Loader from '../components/Loader';
+import Error from '../components/Errormsg';
 
 
 const Gastroenterology = () => {
@@ -17,14 +20,14 @@ const Gastroenterology = () => {
     status,
     loading,
     setLoading,
-    Error,
+    error,
     setError,
   } = useContext(SearchContext);
 
   const fetchDoctorData = page => {
     setLoading(true);
     axios
-      .get(`http://localhost:3000/gastroenterology?_page=${page}&_limit=6`)
+      .get(`http://localhost:8080/gastroenterology?_page=${page}&_limit=6`)
       .then(res => {
         setData(res.data);
         let pages = res.headers['x-total-count'];
@@ -40,6 +43,16 @@ const Gastroenterology = () => {
   useEffect(() => {
     fetchDoctorData(page);
   }, [page]);
+
+  if (loading) {
+    return (
+      <Loader/>
+    );
+  }
+
+  if(error){
+    return <Error/>
+  }
 
   return (
     <>
@@ -64,38 +77,7 @@ const Gastroenterology = () => {
           return <CardsDoc doctor={doctor} />;
         })}
       </Grid>
-      <Box
-        m="40px 5px"
-        alignItems={'center'}
-        display={'flex'}
-        justifyContent={'center'}
-        ga="5px"
-      >
-        <Button
-          color={'white'}
-          bg={'#222566'}
-          _hover={{
-            bg: '#3879E9',
-          }}
-          isDisabled={page === 1}
-          onClick={() => setPage(page - 1)}
-        >
-          PREV
-        </Button>
-        <Button>{page}</Button>
-
-        <Button
-          color={'white'}
-          bg={'#222566'}
-          _hover={{
-            bg: '#3879E9',
-          }}
-          isDisabled={page === totalPages}
-          onClick={() => setPage(page + 1)}
-        >
-          NEXT
-        </Button>
-      </Box>
+      <Buttons2 page={page} setPage={setPage} totalPages={totalPages} />
     </>
   );
 };

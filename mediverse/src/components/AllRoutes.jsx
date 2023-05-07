@@ -15,6 +15,10 @@ import Gynecologist from '../Pages/Gynecologist'
 import Gastroenterology from '../Pages/Gastroenterology'
 import Dermatologist from '../Pages/Dermatologist'
 import Orthopedics from '../Pages/Orthopedics'
+import Pulmonologist from '../Pages/Pulmonologist'
+import BookAppointForm from './BookAppointForm'
+import BookApoointMessage from './BookApoointMessage'
+import SingleDoctorPage from '../Pages/SingleDoctorPage'
 
 
 const AllRoutes = () => {
@@ -30,12 +34,15 @@ const AllRoutes = () => {
         <Route path='/signup' element={<SignupsForms/>} />
         <Route path='*' element={<PageNotFound/>} />
         <Route path='/doctors' element={<Doctors/>} />
+        <Route path='/doctors/:doctor_id' element={<SingleDoctorPage/>} />
         <Route path='/cardiology' element={<Cardiology/>} />
         <Route path='/neurology' element={<Neurology/>} />
         <Route path='/gynecologist' element={<Gynecologist/>} />
         <Route path='/gastroenterology' element={<Gastroenterology/>} />
         <Route path='/dermatologist' element={<Dermatologist/>} />
         <Route path='/orthopedics' element={<Orthopedics/>} />
+        <Route path='/pulmonologist' element={<Pulmonologist/>} />
+        <Route path='/bookingappoint' element={<BookApoointMessage/>} />
       </Routes>
     </div>
   )

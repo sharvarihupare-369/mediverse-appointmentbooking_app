@@ -1,25 +1,5 @@
-/* .App-link {
-    color: #61dafb;
-}
+@import url('https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@300;400;700&family=Poppins:wght@100;200;300;400;500;600;700&family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to{
-        transform: rotate(360deg);
-    }
+.App {
+  font-family: 'Averia Serif Libre', cursive;
 }
-
-:root{
-    --purple: #6200ff;
-}
-
-.text-purple : {
-    color : var(--purple)
-}
-
-.btn-purple{
-    background-color: var(--purple);
-    color: #fff;
-} */

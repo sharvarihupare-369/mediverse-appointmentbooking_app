@@ -33,6 +33,8 @@ const Home = () => {
       <Box>
 
       <Box
+
+       mt="50px"
         bgImage="url('https://img.freepik.com/free-photo/young-professional-doctor-woman-physician-with-stethoscope-holding-digital-tablet-smiling-cam_1258-127422.jpg?w=1380&t=st=1683121920~exp=1683122520~hmac=8191b5cca491733f4d7775b9a4d3c420f30e2c74a3d9c03f29202bb91ba61e53')"
         //   backgroundPosition=""
         backgroundRepeat="no-repeat"
@@ -80,7 +82,7 @@ const Home = () => {
         </Container>
       </Box>
 
-      <Box position={'relative'} bottom={'30px'}>
+      <Box>
         <Box>
           <BookAppointForm />
         </Box>
@@ -98,42 +100,51 @@ const Home = () => {
           Our Excellence Centers
         </Heading>
         <Flex m="60px" cursor={'pointer'} justifyContent={'space-around'}>
+        <Link to='/cardiology'>
           <Box w="200px" textAlign={'center'} >
             <Image       
               borderRadius={'50%'}
               src="https://img.freepik.com/premium-vector/medical-stethoscope-with-human-heart-health-care-medicine_284092-2696.jpg?size=626&ext=jpg&ga=GA1.2.205266656.1682997817&semt=ais"
             />
-            <Heading size="sm" as="h4" >
-              <Link to='/cardiology'>Cardiology</Link>
+            <Heading size="sm" as="h4" mt="3px">
+              Cardiology
             </Heading>
           </Box>
+          </Link>
+          <Link to='/neurology'>
           <Box w="200px" textAlign={'center'}>
             <Image
               borderRadius={'50%'}
               src="https://img.freepik.com/free-vector/human-nervous-system_53876-90443.jpg?size=626&ext=jpg&ga=GA1.1.205266656.1682997817&semt=ais"
             />
             <Heading mt="5px" size="sm" as="h4">
-            <Link to='/neurology'>Neurology</Link> 
+            Neurology
             </Heading>
           </Box>
+          </Link> 
+          <Link to='/gastroEnterology'>
           <Box w="220px" textAlign={'center'}>
             <Image
               borderRadius={'50%'}
               src="https://img.freepik.com/free-vector/human-internal-organ-with-stomach_1308-108170.jpg?size=626&ext=jpg&ga=GA1.1.205266656.1682997817&semt=ais"
             />
             <Heading mt="5px" size="sm" as="h4">
-              GastronEnterology
+              GastroEnterology
             </Heading>
           </Box>
+          </Link>
+           <Link to='pulmonologist'>
           <Box w="230px" textAlign={'center'}>
             <Image
               borderRadius={'50%'}
               src="https://img.freepik.com/free-vector/stethoscope-lungs-earth-globe_1308-126019.jpg?size=626&ext=jpg&ga=GA1.1.205266656.1682997817&semt=ais"
-            />
+              />
             <Heading size="sm" as="h4">
               Pulmonology
             </Heading>
           </Box>
+              </Link>
+          <Link to='/orthopedics'>
           <Box w="200px" textAlign={'center'}>
             <Image
               borderRadius={'50%'}
@@ -143,6 +154,7 @@ const Home = () => {
               Orthopedics
             </Heading>
           </Box>
+          </Link>
         </Flex>
       </Box>
 

@@ -8,10 +8,10 @@ const SearchContextProvider = ({children}) => {
     const [loading, setLoading] = useState(false);
      const [data,setData] = useState([])
      const [status,setStatus] = useState(false)
-     const [Error, setError] = useState(false);
+     const [error, setError] = useState(false);
 
   return (
-   <SearchContext.Provider value={{setData,data,setStatus,status,loading,setLoading,Error,setError}}>
+   <SearchContext.Provider value={{setData,data,setStatus,status,loading,setLoading,error,setError}}>
     {children}
    </SearchContext.Provider>
   )
