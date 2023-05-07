@@ -39,15 +39,8 @@ export default function SignupsForms() {
   // const [password,setPassword] = useState('')
   // const [confirmpassword,setConfirmpassword] = useState('')
   const toast = useToast()
-  // console.log(formdata.firstName)
-  // const userDetails = {
-  //   firstName : firstName,
-  //   lastName : lastName,
-  //   email : email,
-  //   password : password,
-  //   confirmpassword : confirmpassword
-  // }
-
+ 
+ 
   const {firstName,lastName,email,phonenumber,password,confirmPassword} = formdata
 
   const handleChange = e => {
@@ -87,6 +80,22 @@ export default function SignupsForms() {
       })
       return
      }
+     
+    //  if(`^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`){
+      if(`^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])([a-zA-Z0-9@$!%*?&]{8,20})$`.test(password)){
+        
+     }else{
+      toast({
+        title: 'Correct details Required!',
+        description: "Password should be 8-20 characters and at least one number and one special character!",
+        status: 'warning',
+        duration: 4000,
+        isClosable: true,
+        position: 'top',
+      })
+      return
+     }
+
      if (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(email)) {
 
     } else {
@@ -101,6 +110,9 @@ export default function SignupsForms() {
       return
       };
 
+  
+
+
       let userData = {
         firstName,
         lastName,
@@ -109,7 +121,7 @@ export default function SignupsForms() {
         phonenumber
       }
       let res = false;
-       const data = await axios.get(`http://localhost:3000/signup`).then((res) => res.data)
+       const data = await axios.get(`http://localhost:8080/signup`).then((res) => res.data)
        if(data.length > 0){
             data.forEach(el=>{
               if(el.email == userData.email){
@@ -141,6 +153,7 @@ export default function SignupsForms() {
         return
        }
 
+
       //  (check &&   toast({
       //   title: 'User Already Registered',
       //   description: "Please log in to continue.",
@@ -161,6 +174,7 @@ export default function SignupsForms() {
     {/* <Container maxW={'750'}> */}
       <form onSubmit={handleSubmit}>
         <Flex
+          mt={"7    0px"}
           minH={'100vh'}
           align={'center'}
           justify={'center'}

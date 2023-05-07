@@ -35,7 +35,7 @@ const Signup = () => {
       firstName : firstName,
       lastName : lastName
      } 
- const data=axios.post("http://localhost:3000/signup",userdetail)
+ const data=axios.post("http://localhost:8080/signup",userdetail)
     console.log(userdetail,data);
     // fetchdata()
    }

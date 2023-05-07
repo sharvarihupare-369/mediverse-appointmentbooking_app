@@ -17,11 +17,14 @@ import {
   import { SearchContext } from '../Contexts/SearchContextProvider';
 import Buttons from '../components/Buttons';
 import CardsDoc from '../components/CardsDoc';
+import Buttons2 from '../components/Buttons2';
+import Loader from '../components/Loader';
+import Error from '../components/Errormsg';
   
 
 const Gynecologist = () => {
     const [loading, setLoading] = useState(false);
-  const [Error, setError] = useState(false);
+  const [error, setError] = useState(false);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
 
@@ -30,7 +33,7 @@ const Gynecologist = () => {
   const fetchDoctorData = page => {
     setLoading(true);
     axios
-      .get(`http://localhost:3000/gynecologist?_page=${page}&_limit=6`)
+      .get(`http://localhost:8080/gynecologist?_page=${page}&_limit=6`)
       .then(res => {
         setData(res.data);
         let pages = res.headers['x-total-count'];
@@ -49,16 +52,12 @@ const Gynecologist = () => {
 
   if (loading) {
     return (
-      <Flex justifyContent="center">
-        <Spinner
-          thickness="4px"
-          speed="0.65s"
-          emptyColor="gray.200"
-          color="blue.500"
-          size="xl"
-        />
-      </Flex>
+      <Loader/>
     );
+  }
+
+  if(error){
+    return <Error/>
   }
   return (
     <>
@@ -82,55 +81,13 @@ const Gynecologist = () => {
         {data.map((doctor, ind) => {
           //   console.log(doctor);
           return (
-            // <Box boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px" p="10px" borderTopRightRadius={"12px"} borderTopLeftRadius={"12px"}>
-            //   <Image width={'400px'} m="auto" src={doctor.image} />
-            //   <Box mt="10px" lineHeight={"30px"}>
-
-            //   <Heading as="h5" size="sm">
-            //     {doctor.name}
-            //   </Heading>
-            //   <Text>Specialist : {doctor.specialist}</Text>
-            //   <Text>Experience : {doctor.experience}</Text>
-            //   <Text></Text>
-            //   </Box>
-            //  <Buttons/>
-            // </Box>
+           
             <CardsDoc doctor={doctor} />
           );
         })}
       </Grid>
-      <Box
-        m="40px 5px"
-        alignItems={'center'}
-        display={'flex'}
-        justifyContent={'center'}
-        ga="5px"
-      >
-        <Button
-          color={'white'}
-          bg={'#222566'}
-          _hover={{
-            bg: '#3879E9',
-          }}
-          isDisabled={page === 1}
-          onClick={() => setPage(page - 1)}
-        >
-          PREV
-        </Button>
-        <Button>{page}</Button>
-
-        <Button
-          color={'white'}
-          bg={'#222566'}
-          _hover={{
-            bg: '#3879E9',
-          }}
-          isDisabled={page === totalPages}
-          onClick={() => setPage(page + 1)}
-        >
-          NEXT
-        </Button>
-      </Box>
+      
+      <Buttons2 page={page} setPage={setPage} totalPages={totalPages}/>
     </>
   )
   

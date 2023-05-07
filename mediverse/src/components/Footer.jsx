@@ -10,7 +10,7 @@ import {
 
 const Footer = () => {
   return (
-    <Box background={'#222566'} color={'white'} p="40px" textAlign={{base:"center",sm : "center" , md:"start",lg:"start",xl:"start","2xl":"start"}}>
+    <Box background={'#222566'} color={'white'} p="40px" textAlign={{base:"center",sm : "center" , md:"start",lg:"start",xl:"start","2xl":"start"}} mt="50px">
       <Flex justifyContent={"space-around"}  direction={ {base : "column", sm : "column" , md:"column" , lg : "row" , xl:"row" , "2xl" : "row"}} gap="20px" mt="5px">
         <Grid templateColumns={{base : 'repeat(1,1fr)' , sm : 'repeat(1,1fr)' , md:'repeat(2,1fr)',lg:'repeat(2,1fr)',xl:'repeat(4,1fr)',"2xl":'repeat(4,1fr)'}} gap="5px">
           <Box mt="10px" cursor={"pointer"} >

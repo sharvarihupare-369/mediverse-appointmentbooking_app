@@ -42,27 +42,34 @@ export default function WithSubnavigation() {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
 
-
-
-
+ 
   const handleSearch = val => {
     if (val) {
       setStatus(true);
     }
 
     axios
-      .get(`http://localhost:3000/doctors?q=${val}&_page=${page}&_limit=12`)
+      .get(`http://localhost:8080/doctors?q=${val}&_page=${page}&_limit=12`)
       .then(res => {
         console.log(res);
         setData(res.data);
-      
+        
       })
       .catch(err => console.log(err));
   };
+
+
+  const handleDebounce = (val) => {
+    if(id) clearTimeout(id)
+    var id = setTimeout(()=>{
+      handleSearch(val)
+    },1000)
+  }
+
   const { isOpen, onToggle } = useDisclosure();
 
   return (
-    <Box className="animate__animated animate__fadeInDown">
+    <Box position={"fixed"} top="0" w="100%" zIndex={"overlay"} className="animate__animated animate__fadeInDown">
     
       <Flex
         alignItems={'center'}
@@ -93,6 +100,7 @@ export default function WithSubnavigation() {
         </Flex>
         <Flex alignItems={'center'} flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
           <Image
+          
             src={logo1}
             w={{
               base: '100px',
@@ -137,7 +145,7 @@ export default function WithSubnavigation() {
               placeholder="Search here something..."
               w="90%"
               borderRadius={'20px'}
-              onChange={e => handleSearch(e.target.value)}
+              onChange={e => handleDebounce(e.target.value)}
             />
             <Box position={'relative'} right="40px" top="5px">
               {/* <FaSearch   /> */}
@@ -246,15 +254,16 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
       _hover={{ bg: useColorModeValue('blue.50', 'blue.50') }}
     >
       <Stack direction={'row'} align={'center'}>
-        <Box>
+        <Box zIndex={"dropdown"} >
           <Text
             transition={'all .3s ease'}
             _groupHover={{ color: '#3879E9' }}
             fontWeight={500}
+            
           >
             {label}
           </Text>
-          <Text fontSize={'sm'}>{subLabel}</Text>
+          <Text fontSize={'sm'}  >{subLabel}</Text>
         </Box>
         <Flex
           transition={'all .3s ease'}
@@ -304,6 +313,7 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
         <Text
           fontWeight={600}
           color={useColorModeValue('gray.600', 'gray.200')}
+         
         >
           {label}
         </Text>
@@ -318,7 +328,7 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
         )}
       </Flex>
 
-      <Collapse in={isOpen} animateOpacity style={{ marginTop: '0!important' }}>
+      <Collapse  in={isOpen} animateOpacity style={{ marginTop: '0!important' }}>
         <Stack
           mt={2}
           pl={4}
@@ -398,7 +408,7 @@ const NAV_ITEMS: Array<NavItem> = [
       {
         label: 'Pulmonologist',
         // subLabel: 'An exclusive list for contract work',
-        href: '/doctors',
+        href: '/pulmonologist',
       },
     ],
   },
