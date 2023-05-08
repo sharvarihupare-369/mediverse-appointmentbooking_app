@@ -31,7 +31,7 @@ That’s where a search option can be helpful. It allows patients to filter the 
 ![Alt text](mediverse/src/Assets/doctorsPage.png)
 
 Once a patient chooses a physician, they should be able to easily navigate available appointment dates and time slots. The fewer steps it takes to book a visit, the better.
-![Alt text](mediverse/src/Assets/Bookingdetails.png)
+<!-- ![Alt text](mediverse/src/Assets/Bookingdetails.png) -->
 After filling form patient will redirect to payment page and there different online payment methods are available.
 ![Alt text](mediverse/src/Assets/Payment.png)
 
