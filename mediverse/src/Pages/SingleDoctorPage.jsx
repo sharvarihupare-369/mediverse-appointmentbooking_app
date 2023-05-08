@@ -21,6 +21,10 @@ import {
   FormErrorMessage,
   FormHelperText,
   useToast,
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
 } from '@chakra-ui/react';
 import validator from 'validator';
 import axios from 'axios';
@@ -30,7 +34,7 @@ import CardsDoc from '../components/CardsDoc';
 import Loader from '../components/Loader';
 import Error from '../components/Errormsg';
 import { Rating } from 'react-simple-star-rating';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
 
 const initState = {
@@ -39,10 +43,11 @@ const initState = {
   phoneNum: 0,
   gender: '',
   date: '',
+  doctorname:'',
   time: '',
   address: '',
-  city: '',
   state: '',
+  doctorName:""
 };
 
 const SingleDoctorPage = () => {
@@ -51,13 +56,16 @@ const SingleDoctorPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [page, setPage] = useState(1);
+  // const [doctorname,setDoctorname] = useState('')
   const [totalPages, setTotalPages] = useState(0);
-
+  const {doctorname,setDoctorname,bookingformPatient, setBookingformPatient} = useContext(SearchContext)
   const [data, setData] = useState({});
   const toast = useToast();
   const regex = /^([0-9]{2})-([0-9]{2})-([0-9]{4})$/;
 
   const [bookingform, setBookingform] = useState(initState);
+  const [status,setStatus] = useState(false)
+  const navigate = useNavigate()
 
   const isError = bookingform === '';
 
@@ -69,6 +77,8 @@ const SingleDoctorPage = () => {
       .then(res => {
         console.log(res.data);
         setData(res.data);
+        
+        setDoctorname(res.data.name)
         // let pages = res.headers['x-total-count'];
         // setTotalPages(Math.ceil(pages / 12));
         setLoading(false);
@@ -82,6 +92,9 @@ const SingleDoctorPage = () => {
   useEffect(() => {
     fetchDoctorData(doctor_id);
   }, [doctor_id]);
+  // console.log(doctorname)
+
+  
 
   if (loading) {
     return <Loader />;
@@ -91,12 +104,13 @@ const SingleDoctorPage = () => {
     return <Error />;
   }
 
-  const { name, age, phoneNum, gender, date, time, address, city, state } =
-    bookingform;
+  // const {} = useContext(SearchContext)
+  const { name, age, phoneNum, gender, date, time, address, city, state } =bookingform;
 
   const handleFormChange = e => {
    
     setBookingform({ ...bookingform, [e.target.name]: e.target.value });
+    setBookingformPatient({ ...bookingform, [e.target.name]: e.target.value })
   };
   // console.log(bookingform)
 
@@ -107,9 +121,9 @@ const SingleDoctorPage = () => {
       .catch(er => console.log(er));
   };
 
-  const handleFormSubmit = e => {
+  const handleFormSubmit = (e) => {
     e.preventDefault();
-    // fetchPostBookingData(bookingform)
+    
     if (
       !name ||
       !age ||
@@ -141,56 +155,93 @@ const SingleDoctorPage = () => {
         position: 'top',
       });
       return;
-    }
-    if (age < 18) {
+    }else{
+      setStatus(true)
+      setBookingform(initState)
+      fetchPostBookingData(bookingform)
       toast({
-        title: 'Correct details Required!',
-        description: 'Age should be above 18!',
-        status: 'warning',
+        title: 'Booking Done!',
+        description: 'Thank You!Our team will get back to you soon',
+        status: 'success',
         duration: 4000,
         isClosable: true,
         position: 'top',
       });
       return;
+      // return <Alert
+      //   status='success'
+      //   variant='subtle'
+      //   flexDirection='column'
+      //   alignItems='center'
+      //   justifyContent='center'
+      //   textAlign='center'
+      //   height='200px'
+      // >
+      // <AlertIcon boxSize='40px' mr={0} />
+      //   <AlertTitle mt={4} mb={1} fontSize='lg'>
+      //     {`Booking Done on ${date}!`}
+      //   </AlertTitle>
+      //   <AlertDescription maxWidth='sm'>
+      //     Thanks for booking your slot. Our team will get back to you soon.
+      //   </AlertDescription>
+      // </Alert>
+    
     }
-
-    if (validator.isDate(bookingform.date)) {
-      alert('valid date')
-    } else {
-      toast({
-        title: 'Correct details Required!',
-        description: 'Date of Birth must be a valid date',
-        status: 'warning',
-        duration: 4000,
-        isClosable: true,
-        position: 'top',
-      });
-      return;
-    }
-
-    setBookingform(initState);
-
+    
   };
+
+  if(status){
+    setTimeout(()=>{
+      navigate('/payment')
+    },3000)
+   
+  }
+
+  // if(status){
+  //   return   <Alert
+  //   status='success'
+  //   variant='subtle'
+  //   flexDirection='column'
+  //   alignItems='center'
+  //   justifyContent='center'
+  //   textAlign='center'
+  //   height='200px'
+  // >
+  //   <AlertIcon boxSize='40px' mr={0} />
+  //   <AlertTitle mt={4} mb={1} fontSize='lg'>
+  //     {`Booking Done on ${date}!`}
+  //   </AlertTitle>
+  //   <AlertDescription maxWidth='sm'>
+  //     Thanks for booking your slot. Our team will get back to you soon.
+  //   </AlertDescription>
+  // </Alert>
+
+
+  // }
 
 
 
   return (
     <>
-      <Flex justifyContent={'center'}>
+      <Flex justifyContent={'center'} w={{base:"90%", sm : "90%" , md:"80%" , lg:"70%" , xl : "60%" , "2xl" : "60%"}}  m="auto"  >
         <Box
           textAlign={'center'}
-          m="100px"
+          w="100%"
+          
+         m="100px"
           p="50px"
           borderTopRightRadius={'30px'}
           borderBottomLeftRadius={'30px'}
-          boxShadow="rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset"
+          boxShadow= "rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px"
         >
           <Flex alignItems={'center'} justifyContent={'flex-end'}>
             <Text mr="3px">Rating : {data.rating}</Text>
             <FaStar color="green" display={'inline'} />
           </Flex>
           {/* <Rating/>  */}
+          <Flex justifyContent={"center"}>
           <Image w={'400px'} src={data.image} />
+          </Flex>
           <Box mt="10px" lineHeight={'30px'} textAlign={'center'} p="10px">
             <Heading as="h4" size="lg" color={'#222566'}>
               {data.name}
@@ -215,8 +266,7 @@ const SingleDoctorPage = () => {
             <Text textAlign={'center'}>
               Description : Lorem ipsum dolor sit amet consectetur
               <br /> adipisicing elit. Aspernatur voluptates blanditiis
-              <br /> exercitationem
-              <br /> quo quisquam similique cumque beatae hic. Quia!
+             
             </Text>
 
             <Button
@@ -231,13 +281,14 @@ const SingleDoctorPage = () => {
               Book Appointment Now
             </Button>
           </Box>
+          
 
           <Modal
             borderRadius="10px"
             onClose={onClose}
             isOpen={isOpen}
             isCentered
-          >
+            >
             <ModalOverlay />
 
             <form onSubmit={handleFormSubmit}>
@@ -277,6 +328,16 @@ const SingleDoctorPage = () => {
                       name="phoneNum"
                       value={bookingform.phoneNum}
                       onChange={handleFormChange}
+                    />
+                  </Box>
+                  <Box>
+                    <FormLabel>Doctor's Name</FormLabel>
+                    <Input
+                      type="text"
+                      // placeholder="Enter Your Phone Number"
+                      name="doctorName"
+                      value={doctorname}
+                      // onChange={}
                     />
                   </Box>
                   <Box>
@@ -333,7 +394,7 @@ const SingleDoctorPage = () => {
                       name="state"
                       value={bookingform.state}
                       onChange={handleFormChange}
-                    />
+                      />
                   </Box>
                 </ModalBody>
                 <ModalFooter>
@@ -347,8 +408,9 @@ const SingleDoctorPage = () => {
               </ModalContent>
             </form>
           </Modal>
-        </Box>
-      </Flex>
+          </Box>
+                      </Flex>
+      
     </>
   );
 };

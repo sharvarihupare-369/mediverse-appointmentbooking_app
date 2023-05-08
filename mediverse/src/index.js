@@ -7,13 +7,16 @@ import * as serviceWorker from './serviceWorker';
 import { ChakraProvider ,theme } from '@chakra-ui/react';
 import { BrowserRouter } from 'react-router-dom';
 import SearchContextProvider from './Contexts/SearchContextProvider';
+import AuthContextProvider from './Contexts/AuthContextProvider';
 
 const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
 
 root.render(
 
+    <AuthContextProvider>
   <ChakraProvider theme={theme}>
+
     <SearchContextProvider>
 
     <ColorModeScript />
@@ -22,6 +25,7 @@ root.render(
     </BrowserRouter>
     </SearchContextProvider>
     </ChakraProvider>
+    </AuthContextProvider>
  
 );
 

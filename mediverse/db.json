@@ -8,13 +8,53 @@
   ],
   "signup": [
     {
+      "email": "sharvarihupare15@gmail.com",
+      "password": "1233423",
+      "firstName": "Sharvari",
+      "lastName": "Hupare",
+      "id": 1
+    },
+    {
+      "firstName": "Vinayak",
+      "lastName": "Hupare",
+      "email": "vinayakhupare10@gmail.com",
+      "password": "vinayak123",
+      "confirmPassword": "vinayak123",
+      "id": 2
+    },
+    {
+      "firstName": "atharv",
+      "lastName": "hupare",
+      "phonenumber": "8767574757",
+      "email": "atharv@gmail.com",
+      "password": "a@12345",
+      "confirmPassword": "a@12345",
+      "id": 3
+    },
+    {
+      "firstName": "sourabh",
+      "lastName": "hupare",
+      "phonenumber": "9867857857",
+      "email": "sourabh@gmail.com",
+      "password": "ss12345",
+      "confirmPassword": "ss12345",
+      "id": 4
+    }
+  ],
+  "login": [
+    {
       "id": 1,
-      "firstName": "",
-      "lastName": "",
-      "phonenumber": null,
       "email": "",
-      "password": "",
-      "confirmPassword": ""
+      "password": ""
+    }
+  ],
+  "username": [
+    {
+      "email": "sharvarihupare15@gmail.com",
+      "password": "1233423",
+      "firstName": "Sharvari",
+      "lastName": "Hupare",
+      "id": 1
     },
     {
       "email": "sharvarihupare15@gmail.com",
@@ -24,11 +64,12 @@
       "id": 2
     },
     {
-      "firstName": "Vinayak",
-      "lastName": "Hupare",
-      "email": "vinayakhupare10@gmail.com",
-      "password": "vinayak123",
-      "confirmPassword": "vinayak123",
+      "firstName": "atharv",
+      "lastName": "hupare",
+      "phonenumber": "8767574757",
+      "email": "atharv@gmail.com",
+      "password": "a@12345",
+      "confirmPassword": "a@12345",
       "id": 3
     }
   ],
@@ -1399,16 +1440,26 @@
   ],
   "patients": [
     {
-      "id": 1,
-      "name": "",
-      "age": null,
-      "phoneNum": null,
-      "gender": "",
-      "date": "",
-      "time": "",
-      "address": "",
-      "city": "",
-      "state": ""
+      "name": "Sharvari Hupare",
+      "age": "23",
+      "phoneNum": "2324234243",
+      "gender": "female",
+      "date": "2023-05-23",
+      "time": "23:32",
+      "address": "Shastrinagar",
+      "state": "Maharashtra",
+      "id": 1
+    },
+    {
+      "name": "Atharva",
+      "age": "20",
+      "phoneNum": "9878787878",
+      "gender": "male",
+      "date": "2023-06-23",
+      "time": "01:00",
+      "address": "Shastrinagar",
+      "state": "Maharashtra",
+      "id": 2
     }
   ]
 }

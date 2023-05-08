@@ -17,14 +17,16 @@ import {
   Container,
   useToast
 } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useState ,useContext} from 'react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../Contexts/AuthContextProvider';
 
 const initState = {
   firstName: '',
   lastName: '',
-  phonenumber : null,
+  phonenumber : 0,
   email: '',
   password: '',
   confirmPassword: '',
@@ -33,13 +35,9 @@ const initState = {
 export default function SignupsForms() {
   const [showPassword, setShowPassword] = useState(false);
   const [formdata, setFormdata] = useState(initState);
-  // const [firstName,setFirstName] = useState('')
-  // const [lastName,setLastName] = useState('')
-  // const [email,setEmail] = useState('')
-  // const [password,setPassword] = useState('')
-  // const [confirmpassword,setConfirmpassword] = useState('')
   const toast = useToast()
- 
+  const navigate = useNavigate()
+  const {isAuth,setIsAuth,login,logout,setUsername,username} = useContext(AuthContext)
  
   const {firstName,lastName,email,phonenumber,password,confirmPassword} = formdata
 
@@ -48,7 +46,7 @@ export default function SignupsForms() {
   }; 
 
   const fetchPostData = (userData) => {
-     const userDetail= axios.post(`http://localhost:3000/signup`,userData)
+     const userDetail= axios.post(`http://localhost:8080/signup`,userData)
      userDetail.then((res)=>console.log(res)).catch((err)=>console.log(err ))
 
   }
@@ -57,7 +55,7 @@ export default function SignupsForms() {
   const handleSubmit = async(e) => {
     e.preventDefault();
     // fetchPostData();
-     if(!firstName || !lastName || !phonenumber || !email || !password){
+     if(!firstName || !lastName || !phonenumber || !email || !password || !confirmPassword){
       toast({
         title: 'Registration Failed',
         description: "All fields are required",
@@ -68,10 +66,11 @@ export default function SignupsForms() {
       })
       return
      }
+     
 
      if(phonenumber.toString().length !== 10){
       toast({
-        title: 'Correct details Required!',
+        title: 'Enter a valid phone number!',
         description: "Please fill the valid phone number!",
         status: 'warning',
         duration: 4000,
@@ -81,55 +80,74 @@ export default function SignupsForms() {
       return
      }
      
-    //  if(`^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`){
-      if(`^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])([a-zA-Z0-9@$!%*?&]{8,20})$`.test(password)){
-        
-     }else{
-      toast({
-        title: 'Correct details Required!',
-        description: "Password should be 8-20 characters and at least one number and one special character!",
-        status: 'warning',
-        duration: 4000,
-        isClosable: true,
-        position: 'top',
-      })
-      return
+    
+      if(password.length !== confirmPassword.length ){
+        toast({
+          title: 'Enter a valid password!',
+          description: "Password should be of same length!",
+          status: 'error',
+          duration: 4000,
+          isClosable: true,
+          position: 'top',
+        })
+        return
      }
 
-     if (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(email)) {
-
-    } else {
+     if(password !== confirmPassword){
       toast({
-        title: 'Correct details Required!',
-        description: "Please fill the valid Email!",
-        status: 'warning',
+        title: 'Enter a valid password!',
+        description: "Password mismatched!",
+        status: 'error',
         duration: 4000,
         isClosable: true,
         position: 'top',
       })
       return
-      };
+   }
+    //  if(password.toString().length != 12){
+    //   toast({
+    //     title: 'Enter a valid password!',
+    //     description: "Password should be of minimum 6 characters!",
+    //     status: 'warning',
+    //     duration: 4000,
+    //     isClosable: true,
+    //     position: 'top',
+    //   })
+    //   return
+    //  }
 
-  
+    //  if(password.split("").includes('@')){
+
+    //   toast({
+    //     title: 'Enter a valid password!',
+    //     description: "Password must contain a special character",
+    //     status: 'warning',
+    //     duration: 4000,
+    //     isClosable: true,
+    //     position: 'top',
+    //   })
+    //   return
+    //  }
 
 
       let userData = {
         firstName,
         lastName,
+        phonenumber,
         email,
         password,
-        phonenumber
+        confirmPassword
       }
       let res = false;
        const data = await axios.get(`http://localhost:8080/signup`).then((res) => res.data)
        if(data.length > 0){
             data.forEach(el=>{
-              if(el.email == userData.email){
+              if(el.email == userData.email || el.phonenumber == userData.phonenumber){
                 res = true
               }
             })
        }else{
-        fetchPostData(userData)
+        // fetchP/ostData(userData)
         toast({
           title: 'User Registered Successfully',
           description: "Please log in to continue.",
@@ -150,23 +168,27 @@ export default function SignupsForms() {
           isClosable: true,
           position: 'top',
         })
+        // setUsername(userData.firstName)
+        setFormdata(initState)
+        setTimeout(()=>{
+          navigate('/login')
+        },4000)
         return
        }
 
+       if(res){
+        toast({
+          title: 'User Already Registered!',
+          description: "Please log in to continue.",
+          status: 'warning',
+          duration: 4000,
+          isClosable: true,
+          position: 'top',
+        })
+        return
+       }
 
-      //  (check &&   toast({
-      //   title: 'User Already Registered',
-      //   description: "Please log in to continue.",
-      //   status: 'error',
-      //   duration: 4000,
-      //   isClosable: true,
-      //   position: 'top',
-      // })
-
-      // return
     }
-
-  
 
 
   return (
@@ -174,7 +196,7 @@ export default function SignupsForms() {
     {/* <Container maxW={'750'}> */}
       <form onSubmit={handleSubmit}>
         <Flex
-          mt={"7    0px"}
+          mt={"70px"}
           minH={'100vh'}
           align={'center'}
           justify={'center'}
@@ -182,12 +204,9 @@ export default function SignupsForms() {
         >
           <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
             <Stack align={'center'}>
-              <Heading fontSize={'4xl'} textAlign={'center'}>
+              <Heading fontSize={'4xl'} color={"#222566"} textAlign={'center'}>
                 Sign up
               </Heading>
-              <Text fontSize={'lg'} color={'gray.600'}>
-                to enjoy all of our cool features ✌️
-              </Text>
             </Stack>
             <Box
               rounded={'lg'}
@@ -296,7 +315,7 @@ export default function SignupsForms() {
                 </Stack>
                 <Stack pt={6}>
                   <Text align={'center'}>
-                    Already a user? <Link color={'blue.400'}>Login</Link>
+                    Already a user? <Link color={'blue.400'} href="/login">Login</Link>
                   </Text>
                 </Stack>
               </Stack>
