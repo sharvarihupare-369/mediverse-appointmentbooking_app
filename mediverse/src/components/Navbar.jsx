@@ -38,12 +38,12 @@ import { AuthContext } from '../Contexts/AuthContextProvider';
 
 export default function WithSubnavigation() {
   const navigate = useNavigate();
-
   const [inputVal, setInputVal] = useState('');
   const [search, setSearch] = useState(false);
   const { data, setData, setStatus } = useContext(SearchContext);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
+  const [usernamesdata,setUsernamesdata] = useState([])
   const [usernames,setUsernames] = useState('')
 
   const { isAuth, setIsAuth, login, logout, username, setUsername } =
@@ -51,12 +51,17 @@ export default function WithSubnavigation() {
   // const names = username;
 
   const fetchName = () => {
-    axios.get(`http://localhost:8080/username`).then((res)=>setUsernames(res.data.firstName)).catch((err)=>console.log(err))
+    axios.get(`http://localhost:8080/username`).then((res)=>setUsernamesdata(res.data)).catch((err)=>console.log(err))
   }
 
   useEffect(()=>{
     fetchName()
+    usernamesdata.map((el)=>{
+      setUsernames(el.firstName)
+  })
   },[])
+
+  
 
 
   const handleSearch = val => {
@@ -79,6 +84,8 @@ export default function WithSubnavigation() {
       handleSearch(val);
     }, 1000);
   };
+
+
 
   const { isOpen, onToggle } = useDisclosure();
 

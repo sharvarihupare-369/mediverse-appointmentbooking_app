@@ -22,6 +22,7 @@ import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Contexts/AuthContextProvider';
+import 'animate.css';
 
 const initState = {
   firstName: '',
@@ -52,7 +53,7 @@ export default function SignupsForms() {
   }
 
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     // fetchPostData();
      if(!firstName || !lastName || !phonenumber || !email || !password || !confirmPassword){
@@ -139,7 +140,7 @@ export default function SignupsForms() {
         confirmPassword
       }
       let res = false;
-       const data = await axios.get(`http://localhost:8080/signup`).then((res) => res.data)
+       const data =  axios.get(`http://localhost:8080/signup`).then((res) => res.data)
        if(data.length > 0){
             data.forEach(el=>{
               if(el.email == userData.email || el.phonenumber == userData.phonenumber){
@@ -196,13 +197,14 @@ export default function SignupsForms() {
     {/* <Container maxW={'750'}> */}
       <form onSubmit={handleSubmit}>
         <Flex
+        className='animate__animated animate__jackInTheBox'
           mt={"70px"}
           minH={'100vh'}
           align={'center'}
           justify={'center'}
           bg={useColorModeValue('gray.50', 'gray.800')}
         >
-          <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
+          <Stack spacing={8} mx={'auto'} maxW={{base:"md" , sm : "md" , md :"lg" , lg:"xl" , xl : "xl" , "2xl" :"lg"}} py={12} px={6}>
             <Stack align={'center'}>
               <Heading fontSize={'4xl'} color={"#222566"} textAlign={'center'}>
                 Sign up
@@ -215,7 +217,7 @@ export default function SignupsForms() {
               p={8}
               >
               <Stack spacing={4}>
-                <HStack>
+                <Flex gap="10px" direction={{base:"column" , sm:"column" , md:"column" , lg :"row" , xl:"row" , "2xl" : "row"}}>
                   <Box>
                     <FormControl >
                       <FormLabel>First Name</FormLabel>
@@ -238,7 +240,7 @@ export default function SignupsForms() {
                       />
                     </FormControl>
                   </Box>
-                </HStack>
+                </Flex>
                 <FormControl >
                   <FormLabel>Phone Number</FormLabel>
                   <Input
