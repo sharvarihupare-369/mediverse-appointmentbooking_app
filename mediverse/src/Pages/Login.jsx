@@ -23,6 +23,7 @@ import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import axios from 'axios';
 import { AuthContext } from '../Contexts/AuthContextProvider';
 import { useNavigate } from 'react-router-dom';
+import 'animate.css';
 
 const Login = () => {
 
@@ -77,6 +78,7 @@ const Login = () => {
       })
       getname(userData)
       setIsAuth(true)
+      login()
       setEmail("")
       setPassword("")
       // setTimeout(()=>{
@@ -107,13 +109,14 @@ const Login = () => {
   return (
     <form onSubmit={handleSubmit} >
     <Flex
+     className='animate__animated animate__jackInTheBox'
       mt={"40px"}
       minH={'100vh'}
       align={'center'}
       justify={'center'}
       bg={useColorModeValue('gray.50', 'gray.800')}
     >
-      <Stack w="70%" spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
+      <Stack w={{base:"90%" , sm : "90%" , md:"80%" , lg:"70%", xl :"70%" , "2xl" : "70%"}} spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
         <Stack align={'center'}>
           <Heading fontSize={'4xl'} textAlign={'center'} color={"#222566"}>
            Login

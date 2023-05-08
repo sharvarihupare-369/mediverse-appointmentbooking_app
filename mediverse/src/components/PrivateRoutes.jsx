@@ -8,7 +8,7 @@ const PrivateRoutes = ({children}) => {
 
   const {isAuth} = useContext(AuthContext)
 
-  if(!isAuth){
+  if(isAuth){
     return <Login/>
   }
     return children;

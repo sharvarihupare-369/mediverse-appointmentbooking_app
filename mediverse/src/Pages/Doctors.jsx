@@ -191,12 +191,12 @@ const Doctors = () => {
         >
           {data.length == 0 ? (
             // <Heading>Data Not Found</Heading>
-            <Flex justifyContent={'center'}>
+            <Box m="auto" w="100%">
               <Alert status="error">
                 <AlertIcon />
                 <AlertTitle> No data Found!</AlertTitle>
               </Alert>
-            </Flex>
+            </Box>
           ) : (
             data.map((doctor, ind) => {
               console.log(doctor);

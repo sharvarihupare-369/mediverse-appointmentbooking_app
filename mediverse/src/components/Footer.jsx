@@ -1,4 +1,4 @@
-import { Box, Grid, Heading, Text, Flex, HStack, Input, Checkbox, Button } from '@chakra-ui/react';
+import { Box, Grid, Heading, Text, Flex, HStack, Input, Checkbox, Button, Link } from '@chakra-ui/react';
 import React from 'react';
 import {
   FaFacebook,
@@ -6,6 +6,7 @@ import {
   FaLinkedin,
   FaTwitter,
   FaYoutube,
+
 } from 'react-icons/fa';
 
 const Footer = () => {
@@ -39,10 +40,10 @@ const Footer = () => {
               {/* <Box w="90%" m="auto" border="1px solid red"> */}
             <Flex  justifyContent={{base:"center",sm:"center",md:"start",lg:"start",xl:"start","2xl":"start"}} gap="7px" mt="5px" fontSize={'22px'}>
 
-              <FaLinkedin cursor={"pointer"} />
+              <Link to="www.google.com"><FaLinkedin cursor={"pointer"} /></Link>
               <FaTwitter cursor={"pointer"} />
               <FaFacebook cursor={"pointer"} />
-              <FaInstagram cursor={"pointer"} />
+              <FaInstagram cursor={"pointer"}  />
               <FaYoutube cursor={"pointer"} />
             </Flex>
               {/* </Box> */}
@@ -72,7 +73,12 @@ const Footer = () => {
             <Box>
             <Button color={"#222566"} mt="10px">Connect With MEdiVerse</Button>
             </Box>
+             <Box >
+              <Text fontSize="10px" mr="100px" mt="40px">&copy; MEdiVerse 2023</Text>
+  
+              </Box>
         </Box>
+        
       </Flex>
     </Box>
   );

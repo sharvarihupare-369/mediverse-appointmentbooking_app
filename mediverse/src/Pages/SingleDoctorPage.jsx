@@ -36,6 +36,8 @@ import Error from '../components/Errormsg';
 import { Rating } from 'react-simple-star-rating';
 import { useNavigate, useParams } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
+import 'animate.css';
+
 
 const initState = {
   name: '',
@@ -70,7 +72,7 @@ const SingleDoctorPage = () => {
   const isError = bookingform === '';
 
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const fetchDoctorData = () => {
+  const fetchDoctorData = (doctor_id) => {
     setLoading(true);
     axios
       .get(`http://localhost:8080/doctors/${doctor_id}`)
@@ -284,6 +286,7 @@ const SingleDoctorPage = () => {
           
 
           <Modal
+          
             borderRadius="10px"
             onClose={onClose}
             isOpen={isOpen}
@@ -292,7 +295,7 @@ const SingleDoctorPage = () => {
             <ModalOverlay />
 
             <form onSubmit={handleFormSubmit}>
-              <ModalContent>
+              <ModalContent className='animate__animated animate__jackInTheBox' >
                 <ModalHeader bg={'#222566'} color={'white'}>
                   Enter The Details
                 </ModalHeader>
