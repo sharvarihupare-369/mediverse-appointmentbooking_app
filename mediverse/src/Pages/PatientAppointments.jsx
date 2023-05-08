@@ -1,0 +1,171 @@
+import {
+  HStack,
+  Flex,
+  Box,
+  Image,
+  Heading,
+  VStack,
+  Button,
+  useDisclosure,
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogContent,
+  AlertDialogOverlay,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+} from '@chakra-ui/react';
+import axios from 'axios';
+import React, { useContext, useEffect, useState, Text } from 'react';
+import { SearchContext } from '../Contexts/SearchContextProvider';
+import Loader from '../components/Loader';
+import Error from '../components/Errormsg';
+import { FaTimes } from 'react-icons/fa';
+
+const PatientAppointments = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const cancelRef = React.useRef();
+  const [cancel, setCancel] = useState(false);
+
+    // const { bookingformPatient } = useContext(SearchContext);
+
+  const [users, setUsers] = useState([]);
+  //   const [patient,setPatient] = useState({})
+  const {
+    loading,
+    error,
+    setLoading,
+    setError,
+    doctorname,
+    setDoctorname,
+    bookingformPatient,
+  } = useContext(SearchContext);
+
+  const getPatients = () => {
+    setLoading(true);
+    axios
+      .get(`http://localhost:8080/patients`)
+      .then(res => {
+        console.log(res);
+        setUsers(res.data);
+        // setPatient(res.data)
+        setLoading(false);
+      })
+      .catch(err => {
+        setError(true);
+        setLoading(false);
+      });
+  };
+
+  const handleDelete = id => {
+    axios
+      .delete(`http://localhost:8080/patients/${id}`)
+      .then(res => {
+        setCancel(true);
+        getPatients();
+
+        // console.log(res.data)
+      })
+      .catch(err => console.log(err));
+  };
+
+  console.log(users);
+
+  useEffect(() => {
+    getPatients();
+  }, []);
+
+  if (loading) {
+    return <Loader />;
+  }
+  if (error) {
+    return <Error />;
+  }
+
+  return (
+    <Box mt="100px" p="30px">
+      <Heading color={'#222566'} ml={'20px'}>
+        Your Appointments
+      </Heading>
+      <Flex mt="20px" gap="40px">
+        <Box>
+          {users.map(user => {
+            return (
+              <HStack mt="40px">
+                <Image
+                  borderRadius="50%"
+                  w="120px"
+                  src="https://img.freepik.com/premium-vector/avatar-profile-icon_188544-4755.jpg?size=626&ext=jpg&ga=GA1.1.205266656.1682997817&semt=sph"
+                />
+                <Flex flexDirection={{base:"column",sm:"column",md:"column" , lg:"row" , xl:"row" , "2xl" : "row"}} justifyContent={{base:"center" , sm:"center" , md :"center" , lg : "flex-start" , xl : "flex-start" , "2xl" : "flex-start" }}>
+                 
+                  <Box>
+                  <Heading as="h4" size="md" ml="20px">
+                    Name: {user.name}
+                  </Heading>
+                    <HStack>
+                      <Box ml="22px">Age : {user.age}</Box>
+                    </HStack>
+                    {/* <Box ml="22px">doctorName : {user.doctorname}</Box> */}
+                    <Box ml="22px">Gender : {user.gender}</Box>
+                    <Box ml="22px">Date : {user.date}</Box>
+                    <Box ml="22px">Time : {user.time}</Box>
+                    <Box ml="22px">
+                      Address : {user.address} {user.state}
+                    </Box>
+                  </Box>
+                </Flex>
+                <Box>
+                  <Button onClick={onOpen}>Cancel</Button>
+                </Box>
+
+               
+                <AlertDialog
+                  isOpen={isOpen}
+                  leastDestructiveRef={cancelRef}
+                  onClose={onClose}
+
+                >
+                  <AlertDialogOverlay>
+                    <AlertDialogContent>
+                      <AlertDialogHeader  fontSize="lg" fontWeight="bold">
+                      Confirmation
+                      </AlertDialogHeader>
+
+                      <AlertDialogBody>
+                      Are you sure you want to cancel appointment?
+                      </AlertDialogBody>
+
+                      <AlertDialogFooter>
+                        <Button ref={cancelRef} onClick={onClose}>
+                          Cancel
+                        </Button>
+                        <Button
+                          colorScheme="red"
+                          onClick={() => handleDelete(user.id)}
+                          ml={3}
+                        >
+                          Delete
+                        </Button>
+                        
+                      </AlertDialogFooter>
+                    </AlertDialogContent>
+                  </AlertDialogOverlay>
+                </AlertDialog>
+                  }
+              </HStack>
+            );
+          })}
+        </Box>
+      </Flex>
+    </Box>
+  );
+};
+
+export default PatientAppointments;

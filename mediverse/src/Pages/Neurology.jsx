@@ -58,6 +58,7 @@ const Neurology = () => {
         m="auto"
         mt="40px"
         mb="40px"
+        mt="100px"
         templateColumns={{base : 'repeat(1,1fr)' , sm : 'repeat(1,1fr)' , md:'repeat(2,1fr)',lg:'repeat(2,1fr)',xl:'repeat(3,1fr)',"2xl":'repeat(3,1fr)'}}
         textAlign={'center'}
         p="10px"

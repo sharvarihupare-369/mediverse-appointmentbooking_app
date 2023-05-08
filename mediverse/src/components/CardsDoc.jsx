@@ -14,7 +14,7 @@ import {
 
 const CardsDoc = ({doctor}) => {
   return (
-    <Box boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px" p="10px" borderTopRightRadius={"12px"} borderTopLeftRadius={"12px"}>
+    <Box boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px" p="10px"  borderTopRightRadius={"12px"} borderTopLeftRadius={"12px"}>
       {/* <Text>Rating:{doctor.image}</Text> */}
     <Image width={'400px'} m="auto" src={doctor.image} />
     <Box mt="10px" lineHeight={"30px"}>

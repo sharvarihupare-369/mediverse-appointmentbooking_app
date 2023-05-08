@@ -17,6 +17,7 @@ import {
   Image,
   HStack,
   Input,
+  VStack,
 } from '@chakra-ui/react';
 import logo1 from '../Assets/Mediverse (12).png';
 import { Search2Icon } from '@chakra-ui/icons';
@@ -32,17 +33,32 @@ import {
   ChevronRightIcon,
 } from '@chakra-ui/icons';
 import { ColorModeSwitcher } from '../ColorModeSwitcher';
+import { FaSearch, FaUser } from 'react-icons/fa';
+import { AuthContext } from '../Contexts/AuthContextProvider';
 
 export default function WithSubnavigation() {
   const navigate = useNavigate();
 
   const [inputVal, setInputVal] = useState('');
-  const [search,setSearch] = useState(false)
+  const [search, setSearch] = useState(false);
   const { data, setData, setStatus } = useContext(SearchContext);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
+  const [usernames,setUsernames] = useState('')
 
- 
+  const { isAuth, setIsAuth, login, logout, username, setUsername } =
+    useContext(AuthContext);
+  // const names = username;
+
+  const fetchName = () => {
+    axios.get(`http://localhost:8080/username`).then((res)=>setUsernames(res.data.firstName)).catch((err)=>console.log(err))
+  }
+
+  useEffect(()=>{
+    fetchName()
+  },[])
+
+
   const handleSearch = val => {
     if (val) {
       setStatus(true);
@@ -53,24 +69,27 @@ export default function WithSubnavigation() {
       .then(res => {
         console.log(res);
         setData(res.data);
-        
       })
       .catch(err => console.log(err));
   };
 
-
-  const handleDebounce = (val) => {
-    if(id) clearTimeout(id)
-    var id = setTimeout(()=>{
-      handleSearch(val)
-    },1000)
-  }
+  const handleDebounce = val => {
+    if (id) clearTimeout(id);
+    var id = setTimeout(() => {
+      handleSearch(val);
+    }, 1000);
+  };
 
   const { isOpen, onToggle } = useDisclosure();
 
   return (
-    <Box position={"fixed"} top="0" w="100%" zIndex={"overlay"} className="animate__animated animate__fadeInDown">
-    
+    <Box
+      position={'fixed'}
+      top="0"
+      w="100%"
+      zIndex={'overlay'}
+      className="animate__animated animate__fadeInDown"
+    >
       <Flex
         alignItems={'center'}
         bg={useColorModeValue('white', 'gray.800')}
@@ -98,16 +117,19 @@ export default function WithSubnavigation() {
             aria-label={'Toggle Navigation'}
           />
         </Flex>
-        <Flex alignItems={'center'} flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
+        <Flex
+          alignItems={'center'}
+          flex={{ base: 1 }}
+          justify={{ base: 'center', md: 'start' }}
+        >
           <Image
-          
             src={logo1}
             w={{
               base: '100px',
               sm: '100px',
               md: '100px',
-              lg: '150px',
-              xl: '150px',
+              lg: '100px',
+              xl: '100px',
               '2xl': '100px',
             }}
             objectFit={'cover'}
@@ -159,16 +181,56 @@ export default function WithSubnavigation() {
           justify={'flex-end'}
           direction={'row'}
           spacing={6}
+          alignItems={'center'}
         >
+          <VStack>
+            <FaUser />
+            <Text>{isAuth ? usernames : 'User'}</Text>
+          </VStack>
+
           <Button
+            // onClick={isAuth ? logout : ""}
             as={'a'}
             fontSize={'sm'}
             fontWeight={400}
             variant={'link'}
-            href={'#'}
+            href={'/login'}
           >
-            Sign In
+          {isAuth ? "Logout" :   "Sign_in"}
           </Button>
+          {/* {isAuth ? (
+            <Button
+              onClick={logout}
+              as={'a'}
+              display={{ base: 'none', md: 'inline-flex' }}
+              fontSize={'sm'}
+              fontWeight={600}
+              color={'white'}
+              bg={'#222566'}
+              href={'/signup'}
+              _hover={{
+                bg: '#3879E9',
+              }}
+            >
+              Logout
+            </Button> */}
+          ) : (
+            {/* <Button
+              // onClick={logout}
+              as={'a'}
+              display={{ base: 'none', md: 'inline-flex' }}
+              fontSize={'sm'}
+              fontWeight={600}
+              color={'white'}
+              bg={'#222566'}
+              href={'/signup'}
+              _hover={{
+                bg: '#3879E9',
+              }}
+            >
+             Login
+            </Button> */}
+          {/* )} */}
           <Button
             as={'a'}
             display={{ base: 'none', md: 'inline-flex' }}
@@ -180,9 +242,10 @@ export default function WithSubnavigation() {
             _hover={{
               bg: '#3879E9',
             }}
-          >
+          > 
             Sign Up
           </Button>
+
           <ColorModeSwitcher />
         </Stack>
       </Flex>
@@ -254,16 +317,15 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
       _hover={{ bg: useColorModeValue('blue.50', 'blue.50') }}
     >
       <Stack direction={'row'} align={'center'}>
-        <Box zIndex={"dropdown"} >
+        <Box zIndex={'dropdown'}>
           <Text
             transition={'all .3s ease'}
             _groupHover={{ color: '#3879E9' }}
             fontWeight={500}
-            
           >
             {label}
           </Text>
-          <Text fontSize={'sm'}  >{subLabel}</Text>
+          <Text fontSize={'sm'}>{subLabel}</Text>
         </Box>
         <Flex
           transition={'all .3s ease'}
@@ -313,7 +375,6 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
         <Text
           fontWeight={600}
           color={useColorModeValue('gray.600', 'gray.200')}
-         
         >
           {label}
         </Text>
@@ -328,7 +389,7 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
         )}
       </Flex>
 
-      <Collapse  in={isOpen} animateOpacity style={{ marginTop: '0!important' }}>
+      <Collapse in={isOpen} animateOpacity style={{ marginTop: '0!important' }}>
         <Stack
           mt={2}
           pl={4}

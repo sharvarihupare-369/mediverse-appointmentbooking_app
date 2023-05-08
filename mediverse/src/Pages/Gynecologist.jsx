@@ -67,6 +67,7 @@ const Gynecologist = () => {
         m="auto"
         mt="40px"
         mb="40px"
+        mt="100px"
         templateColumns={{
           base: 'repeat(1,1fr)',
           sm: 'repeat(1,1fr)',
