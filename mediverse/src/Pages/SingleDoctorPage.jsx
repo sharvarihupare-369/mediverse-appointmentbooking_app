@@ -48,8 +48,7 @@ const initState = {
   doctorname:'',
   time: '',
   address: '',
-  state: '',
-  doctorName:""
+  state: ''
 };
 
 const SingleDoctorPage = () => {
@@ -122,6 +121,8 @@ const SingleDoctorPage = () => {
       .then(res => console.log(res))
       .catch(er => console.log(er));
   };
+
+  console.log(bookingform)
 
   const handleFormSubmit = (e) => {
     e.preventDefault();

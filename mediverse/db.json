@@ -39,6 +39,24 @@
       "password": "ss12345",
       "confirmPassword": "ss12345",
       "id": 4
+    },
+    {
+      "firstName": "Ritesh",
+      "lastName": "Bondre",
+      "phonenumber": "9898989898",
+      "email": "ritesh@gmail.com",
+      "password": "r12345",
+      "confirmPassword": "r12345",
+      "id": 5
+    },
+    {
+      "firstName": "Avishkar",
+      "lastName": "Bondre",
+      "phonenumber": "1234567564",
+      "email": "avi@gmail.com",
+      "password": "aa12345",
+      "confirmPassword": "aa12345",
+      "id": 6
     }
   ],
   "login": [
@@ -55,22 +73,6 @@
       "firstName": "Sharvari",
       "lastName": "Hupare",
       "id": 1
-    },
-    {
-      "email": "sharvarihupare15@gmail.com",
-      "password": "1233423",
-      "firstName": "Sharvari",
-      "lastName": "Hupare",
-      "id": 2
-    },
-    {
-      "firstName": "atharv",
-      "lastName": "hupare",
-      "phonenumber": "8767574757",
-      "email": "atharv@gmail.com",
-      "password": "a@12345",
-      "confirmPassword": "a@12345",
-      "id": 3
     }
   ],
   "doctors": [
@@ -1436,6 +1438,20 @@
       "phonenumber": null,
       "email": "",
       "message": ""
+    },
+    {
+      "name": "Vinayak Hupare",
+      "email": "vinayak@gmail.com",
+      "phonenumber": "1234567876",
+      "message": "",
+      "id": 2
+    },
+    {
+      "name": "Sorabh",
+      "email": "sourabh@123gmail.com",
+      "phonenumber": "1234563443",
+      "message": "",
+      "id": 3
     }
   ],
   "patients": [
@@ -1460,6 +1476,19 @@
       "address": "Shastrinagar",
       "state": "Maharashtra",
       "id": 2
+    },
+    {
+      "name": "Sharvarii",
+      "age": "28",
+      "phoneNum": "6767565756",
+      "gender": "female",
+      "date": "2023-06-02",
+      "doctorname": "",
+      "time": "11:22",
+      "address": "Rajarampuri , Kolhapur",
+      "state": "Maharashtra",
+      "doctorName": "",
+      "id": 3
     }
   ]
 }

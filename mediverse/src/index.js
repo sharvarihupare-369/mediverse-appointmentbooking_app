@@ -14,8 +14,8 @@ const root = ReactDOM.createRoot(container);
 
 root.render(
 
-    <AuthContextProvider>
   <ChakraProvider theme={theme}>
+    <AuthContextProvider>
 
     <SearchContextProvider>
 
@@ -24,8 +24,8 @@ root.render(
     <App />
     </BrowserRouter>
     </SearchContextProvider>
-    </ChakraProvider>
     </AuthContextProvider>
+    </ChakraProvider>
  
 );
 

@@ -39,8 +39,8 @@ const About = () => {
           </Box>
         </Box>
         <Box p="20px" textAlign={'center'}>
-          <Tag variant="outline" color={'#222566'} p="10px" size={'lg'}>
-            <Heading>About US!</Heading>
+          <Tag  variant="outline" color={'#222566'} p="10px" size={'lg'}>
+            <Heading >About US!</Heading>
           </Tag>
           <Text mt="10px" lineHeight={'30px'}>
             <Text>MEdiVerse</Text>
@@ -56,7 +56,7 @@ const About = () => {
             <br /> adipisicing elit. Qui, ullam in? Culpa quod cupiditate
             voluptate? Distinctio eum provident quaerat officia.
           </Text>
-          <Box w={{base:"300px" , sm:"300px" , md:"400px" , lg:"500px" , xl:"500px" , "2xl" : "500px"}} m="auto" mt="20px">
+          <Box w={{base:"300px" , sm:"300px" , md:"400px" , lg:"500px" , xl:"500px" , "2xl" : "500px"}} m={{base : "auto"}} mt="20px">
 
           <AspectRatio ratio={16 / 9}>
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.952912260219!2d3.375295414770757!3d6.5276316452784755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b2ae68280c1%3A0xdc9e87a367c3d9cb!2sLagos!5e0!3m2!1sen!2sng!4v1567723392506!5m2!1sen!2sng" />

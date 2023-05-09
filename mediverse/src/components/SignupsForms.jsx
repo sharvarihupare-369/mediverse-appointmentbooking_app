@@ -27,7 +27,7 @@ import 'animate.css';
 const initState = {
   firstName: '',
   lastName: '',
-  phonenumber : 0,
+  phonenumber : null,
   email: '',
   password: '',
   confirmPassword: '',
@@ -117,19 +117,7 @@ export default function SignupsForms() {
     //   return
     //  }
 
-    //  if(password.split("").includes('@')){
-
-    //   toast({
-    //     title: 'Enter a valid password!',
-    //     description: "Password must contain a special character",
-    //     status: 'warning',
-    //     duration: 4000,
-    //     isClosable: true,
-    //     position: 'top',
-    //   })
-    //   return
-    //  }
-
+  
 
       let userData = {
         firstName,
@@ -148,7 +136,7 @@ export default function SignupsForms() {
               }
             })
        }else{
-        // fetchP/ostData(userData)
+        fetchPostData(userData)
         toast({
           title: 'User Registered Successfully',
           description: "Please log in to continue.",
@@ -157,6 +145,10 @@ export default function SignupsForms() {
           isClosable: true,
           position: 'top',
         })
+        setFormdata(initState)
+        setTimeout(()=>{
+          navigate('/login')
+        },4000)
         return
        }
        if(!res){
