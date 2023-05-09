@@ -37,6 +37,7 @@ import { Rating } from 'react-simple-star-rating';
 import { useNavigate, useParams } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
 import 'animate.css';
+import { AuthContext } from '../Contexts/AuthContextProvider';
 
 
 const initState = {
@@ -67,7 +68,7 @@ const SingleDoctorPage = () => {
   const [bookingform, setBookingform] = useState(initState);
   const [status,setStatus] = useState(false)
   const navigate = useNavigate()
-
+  const {fetchPrice}  = useContext(AuthContext)
   const isError = bookingform === '';
 
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -92,6 +93,7 @@ const SingleDoctorPage = () => {
 
   useEffect(() => {
     fetchDoctorData(doctor_id);
+    fetchPrice(doctor_id)
   }, [doctor_id]);
   // console.log(doctorname)
 

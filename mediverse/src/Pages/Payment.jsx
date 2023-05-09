@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Box, Image, Flex, Input, FormLabel ,Checkbox, CheckboxGroup, Button, HStack,  Modal,
     ModalOverlay,
     ModalContent,
     ModalHeader,
     ModalFooter,
     ModalBody,
+    Heading,
     ModalCloseButton, useDisclosure,Text, useToast } from '@chakra-ui/react';
 import { FaCheck } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../Contexts/AuthContextProvider';
 
 const Payment = () => {
 
@@ -22,12 +24,26 @@ const Payment = () => {
      const [carddata,setCarddata] = useState([])
      const [status,setStatus] = useState(false)
      const [upi,setUpi] = useState(null)
+    //  const [payprice,setPayprice] = useState(0)
+
+     const {price} = useContext(AuthContext)
 
     //  const handleChange = (e) => {
     //     setCarddata([...carddata,[e.target.name] = e.target.value ])
     //  }
 
- 
+    // const fetchPrice = (id) => {
+    //   axios.get(`http://localhost:8080/doctors/${id}`)
+    // }
+
+    // useEffect(()=>{
+    //   price.map((el)=>{
+    //     return setPayprice(el.price)
+    //   })
+    // },[])
+    
+
+
      const handleSubmitForm = (e) => {
         e.preventDefault()
         if(!name || !cardNum || !cvv || !month || !year  ){
@@ -97,6 +113,9 @@ const Payment = () => {
       </Box>
 
       <Box w="50%" m="30px" >
+        <Box>
+          <Heading as={"h2"} size={"lg"} mb="10px" color={"#222566"}>Appointment Fee : {price} </Heading>
+        </Box>
         <form onSubmit={handleSubmitForm}>
         <FormLabel p="10px" color={"white"} bg={'#222566'}>Credit/Debit Card</FormLabel>
 
