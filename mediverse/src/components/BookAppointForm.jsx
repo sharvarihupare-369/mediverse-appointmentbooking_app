@@ -60,105 +60,74 @@ const BookAppointForm = () => {
       });
       return;
     }else{
-      return <Alert
-          status="success"
-          variant="subtle"
-          flexDirection="column"
-          alignItems="center"
-          justifyContent="center"
-          textAlign="center"
-          height="200px"
-        >
-          <AlertIcon boxSize="40px" mr={0} />
-          <AlertTitle mt={4} mb={1} fontSize="lg">
-            Application submitted!
-          </AlertTitle>
-          <AlertDescription maxWidth="sm">
-            Thanks for submitting your application. Our team will get back to you
-            soon.
-          </AlertDescription>
-        </Alert>;
+
+      bookapoointement()
 
     }
+
+    
    
-    // bookapoointement()
 
     // showBookModal()
-    setTimeout(()=>{
+    
       setName('');
       setMessage('');
       setPhonenumber('');
       setEmail('');
-    },1000)
-  
-    // navigate('/bookingappoint')
+   
+    navigate('/bookingappoint')
   };
 
-  // if (stat) {
-  //   setTimeout(())
-  //  return <Alert
-  //     status="success"
-  //     variant="subtle"
-  //     flexDirection="column"
-  //     alignItems="center"
-  //     justifyContent="center"
-  //     textAlign="center"
-  //     height="200px"
-  //   >
-  //     <AlertIcon boxSize="40px" mr={0} />
-  //     <AlertTitle mt={4} mb={1} fontSize="lg">
-  //       Application submitted!
-  //     </AlertTitle>
-  //     <AlertDescription maxWidth="sm">
-  //       Thanks for submitting your application. Our team will get back to you
-  //       soon.
-  //     </AlertDescription>
-  //   </Alert>;
-  // }
 
   return (
     <Container
+   
      position={"relative"}
      top="-25px"
       borderRadius={'10px'}
       boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px"
       maxW={750}
       p="50px"
+     
     >
       <form onSubmit={handleSubmitAppoint}>
-        <Heading color={'#222566'} textAlign={'center'} size="xl" as="h2">
+        <Heading color={'#222566'}  textAlign={'center'} size="xl" as="h2">
           Book An Appointment
         </Heading>
-        <Box mt="30px">
-          <HStack>
+        <Box mt="30px" m={{base:"10px"}}>
+          <Flex gap="10px"  direction={{base : "column" , sm : "column" , md : "column" , lg : "row" , xl : "row" , "2xl" : "row"}}>
             <Input
+               mt={{base :"10px" , sm:"10px" , md:"10px", lg:"20px" , xl : "20px" , "2xl" :"20px" }}
               type="text"
               placeholder="Name"
               value={name}
               onChange={e => setName(e.target.value)}
             />
             <Input
+             mt={{base :"10px" , sm:"10px" , md:"10px", lg:"20px" , xl : "20px" , "2xl" :"20px" }}
               type="number"
               placeholder="PhoneNumber"
               value={phonenumber}
               onChange={e => setPhonenumber(e.target.value)}
             />
-          </HStack>
+          </Flex>
 
-          <HStack mt="20px">
+          <Flex gap="10px" direction={{base : "column" , sm : "column" , md : "column" , lg : "row" , xl : "row" , "2xl" : "row"}}>
             <Input
+             mt={{base :"20px" , sm:"20px" , md:"10px", lg:"20px" , xl : "20px" , "2xl" :"20px" }}
               type="email"
               placeholder="Email"
               value={email}
               onChange={e => setEmail(e.target.value)}
             />
             <Input
+             mt={{base :"10px" , sm:"10px" , md:"10px", lg:"20px" , xl : "20px" , "2xl" :"20px" }}
               type="text"
               placeholder="Mesaage"
               value={message}
               onChange={e => setMessage(e.target.value)}
             />
-          </HStack>
+          </Flex>
           <Flex justifyContent={'center'}>
             <Button
               

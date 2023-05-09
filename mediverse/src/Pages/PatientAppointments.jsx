@@ -20,6 +20,7 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
+  Grid
 } from '@chakra-ui/react';
 import axios from 'axios';
 import React, { useContext, useEffect, useState, Text } from 'react';
@@ -27,6 +28,8 @@ import { SearchContext } from '../Contexts/SearchContextProvider';
 import Loader from '../components/Loader';
 import Error from '../components/Errormsg';
 import { FaTimes } from 'react-icons/fa';
+import img1 from "../Assets/About (1).png" 
+import img2 from "../Assets/About (2).png" 
 
 const PatientAppointments = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -89,15 +92,15 @@ const PatientAppointments = () => {
   }
 
   return (
-    <Box mt="100px" p="30px">
+    <Box mt="100px" p="30px" >
       <Heading color={'#222566'} ml={'20px'}>
         Your Appointments
       </Heading>
-      <Flex mt="20px" gap="40px">
-        <Box>
+      <Flex  mt="20px" justifyContent={"space-between"} >
+        <Box >
           {users.map(user => {
             return (
-              <HStack mt="40px">
+              <HStack mt="40px" m="30px" p="10px" boxShadow= "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px">
                 <Image
                   borderRadius="50%"
                   w="120px"
@@ -122,7 +125,11 @@ const PatientAppointments = () => {
                   </Box>
                 </Flex>
                 <Box>
-                  <Button onClick={onOpen}>Cancel</Button>
+                  <Button onClick={onOpen}  color={'white'}
+                bg={'#222566'}
+                _hover={{
+                  bg: '#3879E9',
+                }}>Cancel</Button>
                 </Box>
 
                
@@ -162,6 +169,9 @@ const PatientAppointments = () => {
               </HStack>
             );
           })}
+        </Box>
+        <Box>
+          <Image src={img2} />
         </Box>
       </Flex>
     </Box>

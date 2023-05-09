@@ -4,7 +4,7 @@ import {Flex,Spinner} from '@chakra-ui/react'
 
 const Loader = () => {
   return (
-    <Flex justifyContent="center">
+    <Flex justifyContent="center" h="100vh">
     <Spinner
       thickness="4px"
       speed="0.65s"
@@ -12,6 +12,7 @@ const Loader = () => {
       color="blue.500"
       size="xl"
       m = "100px"
+
     />
   </Flex>
   )

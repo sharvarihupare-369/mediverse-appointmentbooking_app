@@ -6,9 +6,10 @@ import { Navigate } from 'react-router-dom'
 
 const PrivateRoutes = ({children}) => {
 
-  const {isAuth} = useContext(AuthContext)
+  // const {isAuth} = useContext(AuthContext)
+  let authval = JSON.parse(localStorage.getItem('auth')) || false
 
-  if(isAuth){
+  if(!authval){
     return <Login/>
   }
     return children;

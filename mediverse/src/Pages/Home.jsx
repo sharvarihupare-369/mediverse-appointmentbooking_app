@@ -8,6 +8,7 @@ import {
   Text,
   Flex,
   Button,
+ 
 } from '@chakra-ui/react';
 import React, { useContext } from 'react';
 import 'animate.css';
@@ -22,8 +23,13 @@ import Doctors from './Doctors';
 import { SearchContext } from '../Contexts/SearchContextProvider';
 const Home = () => {
   const navigate = useNavigate();
+  const naviagte1 = useNavigate();
 
   const { status } = useContext(SearchContext);
+
+  const handleBook = () => {
+    return naviagte1('/doctors');
+  };
 
   return (
     <>
@@ -110,6 +116,7 @@ const Home = () => {
             </Heading>
             <Flex
               m="60px"
+              mt="60px"
               cursor={'pointer'}
               justifyContent={{
                 base: 'center',
@@ -128,6 +135,18 @@ const Home = () => {
                 '2xl': 'row',
               }}
             >
+              <Link to="/doctors">
+                <Box w="200px" textAlign={'center'}>
+                  <Image
+                    borderRadius={'50%'}
+                    src="https://img.freepik.com/free-vector/doctor-character-background_1270-84.jpg?size=626&ext=jpg&ga=GA1.2.205266656.1682997817&semt=sph
+                    "
+                  />
+                  <Heading size="sm" as="h4" mt="3px">
+                    All Doctors
+                  </Heading>
+                </Box>
+              </Link>
               <Link to="/cardiology">
                 <Box w="200px" textAlign={'center'}>
                   <Image
@@ -150,7 +169,7 @@ const Home = () => {
                   </Heading>
                 </Box>
               </Link>
-              <Link to="/gastroEnterology">
+              {/* <Link to="/gastroEnterology">
                 <Box w="220px" textAlign={'center'}>
                   <Image
                     borderRadius={'50%'}
@@ -160,7 +179,7 @@ const Home = () => {
                     GastroEnterology
                   </Heading>
                 </Box>
-              </Link>
+              </Link> */}
               <Link to="pulmonologist">
                 <Box w="230px" textAlign={'center'}>
                   <Image
@@ -173,10 +192,11 @@ const Home = () => {
                 </Box>
               </Link>
               <Link to="/orthopedics">
-                <Box w="200px" textAlign={'center'} >
+                <Box w="200px" textAlign={'center'}>
                   <Image
                     borderRadius={'50%'}
-                    src="https://img.freepik.com/free-photo/3d-male-medical-figure-running-with-knee-bone-highlighted_1048-12528.jpg?size=626&ext=jpg&ga=GA1.1.205266656.1682997817&semt=sph"/>
+                    src="https://img.freepik.com/free-photo/3d-male-medical-figure-running-with-knee-bone-highlighted_1048-12528.jpg?size=626&ext=jpg&ga=GA1.1.205266656.1682997817&semt=sph"
+                  />
                   <Heading size="sm" as="h4" mt="3px">
                     Orthopedics
                   </Heading>
@@ -203,15 +223,24 @@ const Home = () => {
             {/* </Container> */}
           </Box>
           <Box>
-            <Flex direction={{base:"column",sm:"column",md:"column",lg:"row",xl:"row","2xl" : "row"}}>
+            <Flex
+              direction={{
+                base: 'column',
+                sm: 'column',
+                md: 'column',
+                lg: 'row',
+                xl: 'row',
+                '2xl': 'row',
+              }}
+            >
               <Box>
                 <Image
                   w="600px"
                   src="https://img.freepik.com/free-vector/online-doctor-concept_23-2148514649.jpg?w=740&t=st=1683522623~exp=1683523223~hmac=62e2b575f32bc30b1a095ab3f918ab081996a15b1c6f64a63f5d86725baa3c6e"
                 />
               </Box>
-              <Box m="auto 40px" >
-                <Heading color={'#222566'} as="h1" size="xl" >
+              <Box m="auto 40px">
+                <Heading color={'#222566'} as="h1" size="xl">
                   Make an Appointment
                 </Heading>
                 <Heading fontWeight={'400'} color={'#222566'} as="h1" size="xl">
@@ -230,6 +259,7 @@ const Home = () => {
                 </Text>
                 <Box mt="10px">
                   <Button
+                    onClick={handleBook}
                     mr="8px"
                     bg={'#222566'}
                     color={'white'}
@@ -262,14 +292,23 @@ const Home = () => {
             }}
             opacity={'0.7'}
           >
-            <Container h={{base:"800px" , sm:"800px", md:"700px" , lg:"600px" , xl:"400px", "2xl" :"400px"}} maxW={'850px'}>
+            <Container
+              h={{
+                base: '800px',
+                sm: '800px',
+                md: '700px',
+                lg: '600px',
+                xl: '400px',
+                '2xl': '400px',
+              }}
+              maxW={'850px'}
+            >
               <Box m="auto">
-                <br/>
-                <br/>
-                <br/>
+                <br />
+                <br />
+                <br />
                 <Heading>Cardiology</Heading>
                 <Text lineHeight={'34px'}>
-
                   The MEdiVerse Heart Institutes are regarded as one of the best
                   heart hospitals in India, performing a multitude of treatments
                   and procedures in cardiology and cardiothoracic surgery. The

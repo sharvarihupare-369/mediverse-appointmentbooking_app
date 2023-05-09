@@ -24,6 +24,9 @@ import axios from 'axios';
 import { AuthContext } from '../Contexts/AuthContextProvider';
 import { useNavigate } from 'react-router-dom';
 import 'animate.css';
+import { SearchContext } from '../Contexts/SearchContextProvider';
+import Loader from '../components/Loader';
+import Error from '../components/Errormsg';
 
 const Login = () => {
 
@@ -32,25 +35,42 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [res,setRes] = useState([])
   const toast = useToast()
-  const {isAuth,setIsAuth,login,logout,setUsername,username} = useContext(AuthContext)
+  const {loading,setLoading,error,setError} = useContext(SearchContext)
   const navigate = useNavigate()
 
   const getLoginData = () => {
+    setLoading(true)
      axios.get(`http://localhost:8080/signup`).then((res)=>{
       // console.log(res)
       setRes(res.data)
-     }).catch((err)=>console.log(err))
+      setLoading(false)
+     }).catch((err)=>{
+       console.log(err)
+       setError(true)
+       setLoading(false)
+     }
+     )
   }
+
+
 
   useEffect(()=>{
     getLoginData()
   },[])
 
-  const getname = (userData) => {
-    axios.post(`http://localhost:8080/username`,userData).then(res=>console.log(res.data)).catch((err) => console.log(err)) 
+  if(loading){
+     <Loader/>
   }
 
-  console.log(res)
+  if(error) {
+     <Error/>
+  }
+
+  // const getname = (userData) => {
+  //   axios.post(`http://localhost:8080/username`,userData).then(res=>console.log(res.data)).catch((err) => console.log(err)) 
+  // }
+
+  // console.log(res)
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -66,6 +86,9 @@ const Login = () => {
         isClosable: true,
         position: 'top',
       })
+      // setIsAuth(false) 
+      localStorage.setItem('auth',JSON.stringify(false))
+      localStorage.setItem('username',JSON.stringify(""))
       return
     }else{
       toast({
@@ -76,14 +99,17 @@ const Login = () => {
         isClosable: true,
         position: 'top',
       })
-      getname(userData)
-      setIsAuth(true)
-      login()
+      // getname(userData)
+      // setIsAuth(true) 
+      // console.log(isAuth)
+      
+      localStorage.setItem('auth',JSON.stringify(true))
+      localStorage.setItem('username',JSON.stringify(userData))
       setEmail("")
       setPassword("")
-      // setTimeout(()=>{
-      //     navigate('/')
-      // },4000)
+      setTimeout(()=>{
+          navigate('/')
+      },4000)
       return 
     }
   }else{
@@ -95,6 +121,9 @@ const Login = () => {
       isClosable: true,
       position: 'top',
     })
+    // setIsAuth(false) 
+    localStorage.setItem('auth',JSON.stringify(false))
+    localStorage.setItem('username',JSON.stringify(""))
     return
   }
    

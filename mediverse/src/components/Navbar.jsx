@@ -17,10 +17,11 @@ import {
   Image,
   HStack,
   Input,
+  Avatar, AvatarBadge, AvatarGroup,
   VStack,
 } from '@chakra-ui/react';
 import logo1 from '../Assets/Mediverse (12).png';
-import { Search2Icon } from '@chakra-ui/icons';
+import { Search2Icon  } from '@chakra-ui/icons';
 import 'animate.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -35,6 +36,7 @@ import {
 import { ColorModeSwitcher } from '../ColorModeSwitcher';
 import { FaSearch, FaUser } from 'react-icons/fa';
 import { AuthContext } from '../Contexts/AuthContextProvider';
+// import {AiOutlineUser} from 'react-icons'
 
 export default function WithSubnavigation() {
   const navigate = useNavigate();
@@ -45,8 +47,13 @@ export default function WithSubnavigation() {
   const [totalPages, setTotalPages] = useState(0);
   const [usernamesdata,setUsernamesdata] = useState([])
   const [usernames,setUsernames] = useState('')
+  let authval = JSON.parse(localStorage.getItem('auth')) || false
+  let userdatanames = JSON.parse(localStorage.getItem('username')) || ''
 
-  const { isAuth, setIsAuth, login, logout, username, setUsername } =
+  console.log(userdatanames)
+  let fullName = userdatanames.firstName + userdatanames.lastName
+  
+  const { login, logout, username, setUsername } =
     useContext(AuthContext);
   // const names = username;
 
@@ -61,6 +68,9 @@ export default function WithSubnavigation() {
   })
   },[])
 
+  const handleLogout = () => {
+    localStorage.setItem('auth',JSON.stringify(false))
+  }
   
 
 
@@ -108,8 +118,10 @@ export default function WithSubnavigation() {
         borderStyle={'solid'}
         borderColor={useColorModeValue('gray.200', 'gray.900')}
         align={'center'}
+       
       >
         <Flex
+       
           alignItems={'center'}
           flex={{ base: 1, md: 'auto' }}
           ml={{ base: -2 }}
@@ -125,6 +137,7 @@ export default function WithSubnavigation() {
           />
         </Flex>
         <Flex
+          w="40%"
           alignItems={'center'}
           flex={{ base: 1 }}
           justify={{ base: 'center', md: 'start' }}
@@ -154,12 +167,13 @@ export default function WithSubnavigation() {
         </Flex>
 
         <Flex
-          w="50%"
-          mr="300px"
+          w="30%"
+          // mr="300px"
           flex={{ base: 1 }}
-          justify={{ base: 'center', md: 'start' }}
+          justify={{ base: 'start', md: 'start' }}
         >
           <Box
+
             display={{
               base: 'none',
               sm: 'none',
@@ -171,7 +185,7 @@ export default function WithSubnavigation() {
             w="70%"
           >
             <Input
-              placeholder="Search here something..."
+              placeholder="Search something here..."
               w="90%"
               borderRadius={'20px'}
               onChange={e => handleDebounce(e.target.value)}
@@ -191,20 +205,40 @@ export default function WithSubnavigation() {
           alignItems={'center'}
         >
           <VStack>
-            <FaUser />
-            <Text>{isAuth ? usernames : 'User'}</Text>
+            {/* <FaUser /> */}
+            {/* <Text>{authval ? userdatanames.firstName : "User"}</Text> */}
+            {
+              authval ?  <Avatar name={userdatanames.firstName + " " + userdatanames.lastName} color={"white"} bg="#222566"  src='https://bit.ly/broken-link' /> :  
+              <Avatar bg='#222566' />
+            }
+           
+  
           </VStack>
-
+      
+      { 
+        authval  ?   <Button
+        onClick={handleLogout}
+        as={'a'}
+        fontSize={'sm'}
+        fontWeight={400}
+        variant={'link'}
+        href={'/login'}
+      >
+      {"Logout"} </Button> : 
+      
           <Button
-            // onClick={isAuth ? logout : ""}
             as={'a'}
             fontSize={'sm'}
             fontWeight={400}
             variant={'link'}
             href={'/login'}
           >
-          {isAuth ? "Logout" :   "Sign_in"}
+          {"Sign_in"}
           </Button>
+
+      }
+        
+         
           {/* {isAuth ? (
             <Button
               onClick={logout}
@@ -238,6 +272,7 @@ export default function WithSubnavigation() {
              Login
             </Button> */}
           {/* )} */}
+        
           <Button
             as={'a'}
             display={{ base: 'none', md: 'inline-flex' }}
@@ -487,5 +522,5 @@ const NAV_ITEMS: Array<NavItem> = [
   {
     label: 'About Us',
     href: '/about',
-  },
+  }
 ];
