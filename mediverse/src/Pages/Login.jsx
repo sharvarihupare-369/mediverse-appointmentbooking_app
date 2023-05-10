@@ -38,33 +38,23 @@ const Login = () => {
   const {loading,setLoading,error,setError} = useContext(SearchContext)
   const navigate = useNavigate()
 
-  const getLoginData = () => {
-    setLoading(true)
-     axios.get(`http://localhost:8080/signup`).then((res)=>{
-      // console.log(res)
-      setRes(res.data)
-      setLoading(false)
-     }).catch((err)=>{
-       console.log(err)
-       setError(true)
-       setLoading(false)
-     }
-     )
-  }
+  // const getLoginData = () => {
+    
+  // }
 
 
 
-  useEffect(()=>{
-    getLoginData()
-  },[])
+  // useEffect(()=>{
+  //   getLoginData()
+  // },[])
 
-  if(loading){
-     <Loader/>
-  }
+  // if(loading){
+  //    <Loader/>
+  // }
 
-  if(error) {
-     <Error/>
-  }
+  // if(error) {
+  //    <Error/>
+  // }
 
   // const getname = (userData) => {
   //   axios.post(`http://localhost:8080/username`,userData).then(res=>console.log(res.data)).catch((err) => console.log(err)) 
@@ -72,25 +62,31 @@ const Login = () => {
 
   // console.log(res)
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-  const userData = res.find((user)=>user.email === email)
+  const handleSubmit = async(e) => {
 
-  if(userData){
-    if(userData.password  !== password){
+    e.preventDefault()
+
+     const logindata = await axios.get(`http://localhost:8080/signup`).then((res)=> res.data )
+     console.log(logindata)
+
+     if(!email || !password ){
       toast({
-        title: 'Wrong Credentials',
-        description: "Please enter correct password",
-        status: 'error',
+        title: 'Login Failed',
+        description: "All fields are required",
+        status: 'warning',
         duration: 4000,
         isClosable: true,
         position: 'top',
       })
-      // setIsAuth(false) 
-      localStorage.setItem('auth',JSON.stringify(false))
-      localStorage.setItem('username',JSON.stringify(""))
       return
-    }else{
+     }
+     
+
+  const userData = logindata.find((user)=>user.email === email)
+
+  if(userData){
+    if(userData.password  == password){
+
       toast({
         title: `${userData.email} Logged in Successfully`,
         // description: "",
@@ -99,10 +95,7 @@ const Login = () => {
         isClosable: true,
         position: 'top',
       })
-      // getname(userData)
-      // setIsAuth(true) 
-      // console.log(isAuth)
-      
+ 
       localStorage.setItem('auth',JSON.stringify(true))
       localStorage.setItem('username',JSON.stringify(userData))
       setEmail("")
@@ -111,11 +104,27 @@ const Login = () => {
           navigate('/')
       },4000)
       return 
+    
+      // setIsAuth(false) 
+     
+    }else{
+      toast({
+        title: 'Password mismatched',
+        description: "Please enter correct password",
+        status: 'error',
+        duration: 4000,
+        isClosable: true,
+        position: 'top',
+      })
+     
+      localStorage.setItem('auth',JSON.stringify(false))
+      localStorage.setItem('username',JSON.stringify(""))
+      return
     }
   }else{
     toast({
-      title: 'Incorrect Email',
-      description: "Please enter correct email",
+      title: 'Wrong Credentials',
+      description: "Make sure you are registered",
       status: 'error',
       duration: 4000,
       isClosable: true,
@@ -128,12 +137,6 @@ const Login = () => {
   }
    
   }
-
-
-  // if(isAuth){
-  //   navigate('/')
-  // }
-  
 
   return (
     <form onSubmit={handleSubmit} >

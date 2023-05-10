@@ -152,6 +152,7 @@ export default function WithSubnavigation() {
               xl: '100px',
               '2xl': '100px',
             }}
+          
             objectFit={'cover'}
             borderRadius={'5px'}
             textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
@@ -238,41 +239,7 @@ export default function WithSubnavigation() {
 
       }
         
-         
-          {/* {isAuth ? (
-            <Button
-              onClick={logout}
-              as={'a'}
-              display={{ base: 'none', md: 'inline-flex' }}
-              fontSize={'sm'}
-              fontWeight={600}
-              color={'white'}
-              bg={'#222566'}
-              href={'/signup'}
-              _hover={{
-                bg: '#3879E9',
-              }}
-            >
-              Logout
-            </Button> */}
-          ) : (
-            {/* <Button
-              // onClick={logout}
-              as={'a'}
-              display={{ base: 'none', md: 'inline-flex' }}
-              fontSize={'sm'}
-              fontWeight={600}
-              color={'white'}
-              bg={'#222566'}
-              href={'/signup'}
-              _hover={{
-                bg: '#3879E9',
-              }}
-            >
-             Login
-            </Button> */}
-          {/* )} */}
-        
+       
           <Button
             as={'a'}
             display={{ base: 'none', md: 'inline-flex' }}

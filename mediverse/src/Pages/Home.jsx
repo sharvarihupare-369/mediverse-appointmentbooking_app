@@ -8,6 +8,7 @@ import {
   Text,
   Flex,
   Button,
+  Grid
  
 } from '@chakra-ui/react';
 import React, { useContext } from 'react';
@@ -114,26 +115,14 @@ const Home = () => {
               {' '}
               Our Excellence Centers
             </Heading>
-            <Flex
-              m="60px"
-              mt="60px"
+            <Grid
+             w="90%"
+             m="60px auto"  
+              templateColumns={{base:"repeat(1,1fr)", sm : "repeat(1,1fr)", md:"repeat(2,1fr)", lg:"repeat(3,1fr)", xl:"repeat(5,1fr)", "2xl" : "repeat(5,1fr)"}}
+             gap="20px"
+             placeItems={"center"}
               cursor={'pointer'}
-              justifyContent={{
-                base: 'center',
-                sm: 'center',
-                md: 'center',
-                lg: 'space-around',
-                xl: 'space-around',
-                '2xl': 'space-around',
-              }}
-              flexDirection={{
-                base: 'column',
-                sm: 'column',
-                md: 'column',
-                lg: 'row',
-                xl: 'row',
-                '2xl': 'row',
-              }}
+            
             >
               <Link to="/doctors">
                 <Box w="200px" textAlign={'center'}>
@@ -169,17 +158,7 @@ const Home = () => {
                   </Heading>
                 </Box>
               </Link>
-              {/* <Link to="/gastroEnterology">
-                <Box w="220px" textAlign={'center'}>
-                  <Image
-                    borderRadius={'50%'}
-                    src="https://img.freepik.com/free-vector/human-internal-organ-with-stomach_1308-108170.jpg?size=626&ext=jpg&ga=GA1.1.205266656.1682997817&semt=ais"
-                  />
-                  <Heading mt="5px" size="sm" as="h4">
-                    GastroEnterology
-                  </Heading>
-                </Box>
-              </Link> */}
+             
               <Link to="pulmonologist">
                 <Box w="230px" textAlign={'center'}>
                   <Image
@@ -202,7 +181,7 @@ const Home = () => {
                   </Heading>
                 </Box>
               </Link>
-            </Flex>
+            </Grid>
           </Box>
 
           <Box bgGradient="linear(to-r, #3879E9, #222566)">

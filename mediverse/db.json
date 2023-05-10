@@ -57,6 +57,15 @@
       "password": "aa12345",
       "confirmPassword": "aa12345",
       "id": 6
+    },
+    {
+      "firstName": "Sharvariiiii",
+      "lastName": "Hupareeeee",
+      "phonenumber": "2343453456",
+      "email": "shara@gmail.com",
+      "password": "ss12345",
+      "confirmPassword": "ss12345",
+      "id": 7
     }
   ],
   "login": [
@@ -1452,6 +1461,13 @@
       "phonenumber": "1234563443",
       "message": "",
       "id": 3
+    },
+    {
+      "name": "Sharvari Hupare",
+      "email": "sharvarihupare15@gmail.com",
+      "phonenumber": "2342343242",
+      "message": "",
+      "id": 4
     }
   ],
   "patients": [
@@ -1489,6 +1505,42 @@
       "state": "Maharashtra",
       "doctorName": "",
       "id": 3
+    },
+    {
+      "name": "Sharvariii",
+      "age": "22",
+      "phoneNum": "2324234244",
+      "gender": "female",
+      "date": "2033-06-23",
+      "doctorname": "",
+      "time": "23:32",
+      "address": "Shastrinagar",
+      "state": "Maharashtra",
+      "id": 4
+    },
+    {
+      "name": "Sharvari Hupare",
+      "age": "32",
+      "phoneNum": "3443232322",
+      "gender": "female",
+      "date": "2023-05-23",
+      "doctorname": "",
+      "time": "02:22",
+      "address": "Shastrinagar",
+      "state": "Maharashtra",
+      "id": 5
+    },
+    {
+      "name": "Sharvari Hupare",
+      "age": "45",
+      "phoneNum": "3453453456",
+      "gender": "female",
+      "date": "2024-03-23",
+      "doctorname": "",
+      "time": "23:34",
+      "address": "Shastrinagar",
+      "state": "Maharashtra",
+      "id": 6
     }
   ]
 }
