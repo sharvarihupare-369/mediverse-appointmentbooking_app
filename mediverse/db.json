@@ -57,6 +57,15 @@
       "password": "aa12345",
       "confirmPassword": "aa12345",
       "id": 6
+    },
+    {
+      "firstName": "Sharvariiiii",
+      "lastName": "Hupareeeee",
+      "phonenumber": "2343453456",
+      "email": "shara@gmail.com",
+      "password": "ss12345",
+      "confirmPassword": "ss12345",
+      "id": 7
     }
   ],
   "login": [
