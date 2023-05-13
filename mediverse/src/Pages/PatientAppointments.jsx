@@ -35,6 +35,7 @@ const PatientAppointments = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cancelRef = React.useRef();
   const [cancel, setCancel] = useState(false);
+  const [delete1,setDelete1] = useState(false) 
 
     // const { bookingformPatient } = useContext(SearchContext);
 
@@ -53,7 +54,7 @@ const PatientAppointments = () => {
   const getPatients = () => {
     setLoading(true);
     axios
-      .get(`http://localhost:8080/patients`)
+      .get(`https://doctordata.onrender.com/patients`)
       .then(res => {
         console.log(res);
         setUsers(res.data);
@@ -68,8 +69,9 @@ const PatientAppointments = () => {
 
   const handleDelete = id => {
     axios
-      .delete(`http://localhost:8080/patients/${id}`)
+      .delete(`https://doctordata.onrender.com/patients/${id}`)
       .then(res => {
+        setDelete1(true)
         setCancel(true);
         getPatients();
 

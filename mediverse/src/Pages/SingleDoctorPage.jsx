@@ -75,7 +75,7 @@ const SingleDoctorPage = () => {
   const fetchDoctorData = (doctor_id) => {
     setLoading(true);
     axios
-      .get(`http://localhost:8080/doctors/${doctor_id}`)
+      .get(`https://doctordata.onrender.com/doctors/${doctor_id}`)
       .then(res => {
         console.log(res.data);
         setData(res.data);
@@ -119,7 +119,7 @@ const SingleDoctorPage = () => {
 
   const fetchPostBookingData = bookingform => {
     axios
-      .post(`http://localhost:8080/patients`, bookingform)
+      .post(`https://doctordata.onrender.com/patients`, bookingform)
       .then(res => console.log(res))
       .catch(er => console.log(er));
   };

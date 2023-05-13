@@ -1,13 +1,13 @@
 # wired-cover-3187
 
-#MEdiVerse.com
+# MEdiVerse.com
 This was an individual project made by me and executed within the span of 5 days. I did this project in our unit-4 construct week.
 
 ## Tech Stack 
-📍React js
-📍Chakra UI
-📍Animate.css
-📍React-Router-Dom
+* React js
+* Chakra UI
+* Animate.css
+* React-Router-Dom
 
 ## Vercel Link - https://mediverse-five.vercel.app/
 

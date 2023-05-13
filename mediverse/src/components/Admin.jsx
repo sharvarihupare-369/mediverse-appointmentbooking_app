@@ -46,7 +46,7 @@ const Admin = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post(`http://localhost:8080/doctors`,state).then((res)=>console.log(res)).catch((err)=>console.log(err))
+        axios.post(`https://doctordata.onrender.com/doctors`,state).then((res)=>console.log(res)).catch((err)=>console.log(err))
         dispatch({type:"ResetVals"})
     }
 

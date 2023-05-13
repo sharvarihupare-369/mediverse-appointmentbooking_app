@@ -30,7 +30,7 @@ const Cardiology = () => {
   const fetchDoctorData = page => {
     setLoading(true);
     axios
-      .get(`http://localhost:8080/cardiology?_page=${page}&_limit=6`)
+      .get(`https://doctordata.onrender.com/cardiology?_page=${page}&_limit=6`)
       .then(res => {
         setData(res.data);
         let pages = res.headers['x-total-count'];

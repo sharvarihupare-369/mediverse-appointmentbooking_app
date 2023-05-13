@@ -13,7 +13,7 @@ const AuthContextProvider = ({children}) => {
   const [price,setPrice] = useState(0)
 
   const fetchPrice = (id) => {
-    axios.get(`http://localhost:8080/doctors/${id}`).then((res)=>{
+    axios.get(`https://doctordata.onrender.com/doctors/${id}`).then((res)=>{
          setPrice(res.data.price)
          console.log(res.data)
     }).catch((err)=>console.log(err))

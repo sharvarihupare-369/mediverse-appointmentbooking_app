@@ -37,7 +37,7 @@ const BookAppointForm = () => {
 
   const bookapoointement = () => {
     axios
-      .post(`http://localhost:8080/bookingappoint`, {
+      .post(`https://doctordata.onrender.com/bookingappoint`, {
         name,
         email,
         phonenumber,
@@ -64,9 +64,6 @@ const BookAppointForm = () => {
       bookapoointement()
 
     }
-
-    
-   
 
     // showBookModal()
     
