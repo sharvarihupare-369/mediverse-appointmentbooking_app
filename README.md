@@ -9,7 +9,6 @@ This was an individual project made by me and executed within the span of 5 days
 * Animate.css
 * React-Router-Dom
 
-## Vercel Link - https://mediverse-five.vercel.app/
 
 ## Logo 
 
