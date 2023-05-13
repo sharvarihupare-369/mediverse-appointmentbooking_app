@@ -66,6 +66,42 @@
       "password": "ss12345",
       "confirmPassword": "ss12345",
       "id": 7
+    },
+    {
+      "firstName": "namisha",
+      "lastName": "kurade",
+      "phonenumber": "3454567678",
+      "email": "namu@gmail.com",
+      "password": "nama123",
+      "confirmPassword": "nama123",
+      "id": 8
+    },
+    {
+      "firstName": "sharvarii",
+      "lastName": "huparee",
+      "phonenumber": "5467678787",
+      "email": "sharaa@gmail.com",
+      "password": "shara123",
+      "confirmPassword": "shara123",
+      "id": 9
+    },
+    {
+      "firstName": "namisha",
+      "lastName": "kurade",
+      "phonenumber": "2345654653",
+      "email": "namisha@gmail.com",
+      "password": "namu123",
+      "confirmPassword": "namu123",
+      "id": 10
+    },
+    {
+      "firstName": "sharvari",
+      "lastName": "Hupare",
+      "phonenumber": "6574674673",
+      "email": "shara@123gmail.com",
+      "password": "12345",
+      "confirmPassword": "12345",
+      "id": 11
     }
   ],
   "login": [
@@ -1541,6 +1577,18 @@
       "address": "Shastrinagar",
       "state": "Maharashtra",
       "id": 6
+    },
+    {
+      "name": "sharavari",
+      "age": "23",
+      "phoneNum": "3456787878",
+      "gender": "female",
+      "date": "2023-05-23",
+      "doctorname": "",
+      "time": "01:34",
+      "address": "Shastrinagar",
+      "state": "Maharashtra",
+      "id": 7
     }
   ]
 }

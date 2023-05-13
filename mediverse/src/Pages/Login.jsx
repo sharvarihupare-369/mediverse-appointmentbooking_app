@@ -66,7 +66,7 @@ const Login = () => {
 
     e.preventDefault()
 
-     const logindata = await axios.get(`http://localhost:8080/signup`).then((res)=> res.data )
+     const logindata = await axios.get(`https://doctordata.onrender.com/signup`).then((res)=> res.data )
      console.log(logindata)
 
      if(!email || !password ){

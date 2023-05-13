@@ -26,7 +26,7 @@ const Orthopedics = () => {
     const fetchDoctorData = page => {
       setLoading(true);
       axios
-        .get(`http://localhost:8080/orthopedics?_page=${page}&_limit=6`)
+        .get(`https://doctordata.onrender.com/orthopedics?_page=${page}&_limit=6`)
         .then(res => {
           setData(res.data);
           let pages = res.headers['x-total-count'];

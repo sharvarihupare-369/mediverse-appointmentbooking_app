@@ -47,7 +47,7 @@ export default function SignupsForms() {
   }; 
 
   const fetchPostData = (userData) => {
-     const userDetail= axios.post(`http://localhost:8080/signup`,userData)
+     const userDetail= axios.post(`https://doctordata.onrender.com/signup`,userData)
      userDetail.then((res)=>console.log(res)).catch((err)=>console.log(err ))
 
   }
@@ -128,7 +128,7 @@ export default function SignupsForms() {
         confirmPassword
       }
       let res = false;
-       const data =  axios.get(`http://localhost:8080/signup`).then((res) => res.data)
+       const data =  axios.get(`https://doctordata.onrender.com/signup`).then((res) => res.data)
        if(data.length > 0){
             data.forEach(el=>{
               if(el.email == userData.email || el.phonenumber == userData.phonenumber){

@@ -62,7 +62,7 @@ const Doctors = () => {
 
   const fetchDoctorData = (page, orderBy, orderByRating, filterBy) => {
     let api = getapis(
-      `http://localhost:8080/doctors?_page=${page}&_limit=12`,
+      `https://doctordata.onrender.com/doctors?_page=${page}&_limit=12`,
       orderBy,
       orderByRating,
       filterBy
@@ -81,6 +81,11 @@ const Doctors = () => {
         setLoading(false);
       });
   };
+
+  const getDoctorValue = (value,page) =>{
+       axios.get(`https://doctordata.onrender.com/${value}?_page=${page}&_limit=12`).then((res)=>{setData(res.data)}).catch((err)=>setError(true))
+  }
+
 
   const handleClick = id => {
     navigate(`/doctors/${id}`);
@@ -156,17 +161,18 @@ const Doctors = () => {
           <Select
             className="filter-by-category"
             value={filterBy}
-            onChange={e => setFilterBy(e.target.value)}
+            onChange={(e)=>getDoctorValue(e.target.value)}
           >
-            <option value="">All Categories</option>
-            <option value="Cardiologist">Cardiologist</option>
-            <option value="Neurologist">Neurologist</option>
+            <option value="">Select Category</option>
+            <option value="doctors">All Categories</option>
+            <option value="cardiology">Cardiologist</option>
+            <option value="neurology">Neurologist</option>
             <option value="Gynecologist">Gynecologist</option>
-            <option value="Dermatologist">Dermatologist</option>
-            <option value="Gastroenterologist">Gastroenterologist</option>
-            <option value="Pulmonologist">Pulmonologist</option>
-            <option value="Orthopedics">Orthopedics</option>
-            <option value="GeneralMedicine">General Medicine</option>
+            <option value="dermatologist">Dermatologist</option>
+            <option value="gastroenterology">Gastroenterologist</option>
+            <option value="pulmonologist">Pulmonologist</option>
+            <option value="orthopedics">Orthopedics</option>
+            {/* <option value="generalMedicine">General Medicine</option> */}
           </Select>
         </Box>
       </Grid>

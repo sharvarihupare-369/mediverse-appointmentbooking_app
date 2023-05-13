@@ -58,7 +58,7 @@ export default function WithSubnavigation() {
   // const names = username;
 
   const fetchName = () => {
-    axios.get(`http://localhost:8080/username`).then((res)=>setUsernamesdata(res.data)).catch((err)=>console.log(err))
+    axios.get(`https://doctordata.onrender.com/username`).then((res)=>setUsernamesdata(res.data)).catch((err)=>console.log(err))
   }
 
   useEffect(()=>{
@@ -80,7 +80,7 @@ export default function WithSubnavigation() {
     }
 
     axios
-      .get(`http://localhost:8080/doctors?q=${val}&_page=${page}&_limit=12`)
+      .get(`https://doctordata.onrender.com/doctors?q=${val}&_page=${page}&_limit=12`)
       .then(res => {
         console.log(res);
         setData(res.data);
@@ -152,7 +152,6 @@ export default function WithSubnavigation() {
               xl: '100px',
               '2xl': '100px',
             }}
-          
             objectFit={'cover'}
             borderRadius={'5px'}
             textAlign={useBreakpointValue({ base: 'center', md: 'left' })}

@@ -22,7 +22,7 @@ const Navbar2 = () => {
     if(val){
         setStatus(true)
     }
-    axios.get(`http://localhost:3000/doctors?q=${val}`).then((res)=>{
+    axios.get(`https://doctordata.onrender.com/doctors?q=${val}`).then((res)=>{
       console.log(res)
       setData(res.data)
      }).catch((err)=>console.log(err))
