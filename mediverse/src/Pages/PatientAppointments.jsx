@@ -133,8 +133,6 @@ const PatientAppointments = () => {
                   bg: '#3879E9',
                 }}>Cancel</Button>
                 </Box>
-
-               
                 <AlertDialog
                   isOpen={isOpen}
                   leastDestructiveRef={cancelRef}
@@ -167,7 +165,6 @@ const PatientAppointments = () => {
                     </AlertDialogContent>
                   </AlertDialogOverlay>
                 </AlertDialog>
-                  }
               </HStack>
             );
           })}
@@ -176,6 +173,7 @@ const PatientAppointments = () => {
           <Image src={img2} />
         </Box>
       </Flex>
+      
     </Box>
   );
 };

@@ -68,7 +68,7 @@ const Payment = () => {
           });
           return;
        }
-       if(cvv.toString().length != 3){
+       if(cvv.length != 3){
         toast({
             title: 'Payment Failed',
             description: 'Please Enter a valid CVV',
@@ -131,7 +131,7 @@ const Payment = () => {
         </Box>
 
         <Box w="49%">
-          <Input type="number" placeholder="CVV" name='cvv' value={cvv} onChange={(e)=>setCvv(e.target.value)} />
+          <Input type="string" placeholder="CVV" name='cvv' value={cvv} onChange={(e)=>setCvv(e.target.value)} />
         </Box>
         </Flex>
         <Flex w="95%"  justifyContent={"space-around"}>
@@ -156,7 +156,7 @@ const Payment = () => {
         status ? 
        
 
-              <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
+        <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader color={"green"} fontSize={"40px"} textAlign={"center"}>Thank You!</ModalHeader>

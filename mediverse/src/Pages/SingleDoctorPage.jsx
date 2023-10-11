@@ -42,8 +42,8 @@ import { AuthContext } from '../Contexts/AuthContextProvider';
 
 const initState = {
   name: '',
-  age: 0,
-  phoneNum: 0,
+  age: null,
+  phoneNum: null,
   gender: '',
   date: '',
   doctorname:'',
@@ -72,6 +72,9 @@ const SingleDoctorPage = () => {
   const isError = bookingform === '';
 
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const allowedTimeSlots = ["11:00", "12:00", "13:00","15:00","16:00"]; 
+
   const fetchDoctorData = (doctor_id) => {
     setLoading(true);
     axios
@@ -120,11 +123,15 @@ const SingleDoctorPage = () => {
   const fetchPostBookingData = bookingform => {
     axios
       .post(`https://doctordata.onrender.com/patients`, bookingform)
-      .then(res => console.log(res))
+      .then(res => {
+        // console.log(res)
+
+      }
+      )
       .catch(er => console.log(er));
   };
 
-  console.log(bookingform)
+  // console.log(bookingform)
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -160,6 +167,18 @@ const SingleDoctorPage = () => {
         position: 'top',
       });
       return;
+    }
+    if (!allowedTimeSlots.includes(time)) {
+      // Handle time slot validation
+      toast({
+        title: 'Invalid Time Slot',
+        description: 'Please select a valid time slot',
+        status: 'warning',
+        duration: 4000,
+        isClosable: true,
+        position: 'top',
+      });
+      return;
     }else{
       setStatus(true)
       setBookingform(initState)
@@ -173,23 +192,7 @@ const SingleDoctorPage = () => {
         position: 'top',
       });
       return;
-      // return <Alert
-      //   status='success'
-      //   variant='subtle'
-      //   flexDirection='column'
-      //   alignItems='center'
-      //   justifyContent='center'
-      //   textAlign='center'
-      //   height='200px'
-      // >
-      // <AlertIcon boxSize='40px' mr={0} />
-      //   <AlertTitle mt={4} mb={1} fontSize='lg'>
-      //     {`Booking Done on ${date}!`}
-      //   </AlertTitle>
-      //   <AlertDescription maxWidth='sm'>
-      //     Thanks for booking your slot. Our team will get back to you soon.
-      //   </AlertDescription>
-      // </Alert>
+
     
     }
     
@@ -201,30 +204,6 @@ const SingleDoctorPage = () => {
     },3000)
    
   }
-
-  // if(status){
-  //   return   <Alert
-  //   status='success'
-  //   variant='subtle'
-  //   flexDirection='column'
-  //   alignItems='center'
-  //   justifyContent='center'
-  //   textAlign='center'
-  //   height='200px'
-  // >
-  //   <AlertIcon boxSize='40px' mr={0} />
-  //   <AlertTitle mt={4} mb={1} fontSize='lg'>
-  //     {`Booking Done on ${date}!`}
-  //   </AlertTitle>
-  //   <AlertDescription maxWidth='sm'>
-  //     Thanks for booking your slot. Our team will get back to you soon.
-  //   </AlertDescription>
-  // </Alert>
-
-
-  // }
-
-
 
   return (
     <>
@@ -279,6 +258,7 @@ const SingleDoctorPage = () => {
               mt="10px"
               color={'white'}
               bg={'#222566'}
+               
               _hover={{
                 bg: '#3879E9',
               }}
@@ -289,7 +269,7 @@ const SingleDoctorPage = () => {
           
 
           <Modal
-          
+         size="lg"
             borderRadius="10px"
             onClose={onClose}
             isOpen={isOpen}
@@ -303,8 +283,8 @@ const SingleDoctorPage = () => {
                   Enter The Details
                 </ModalHeader>
                 <ModalCloseButton color={'white'} />
-                <ModalBody>
-                  <Box>
+                <ModalBody overflowY="auto" >
+                  <Box >
                     <FormControl>
                       <FormLabel>Enter Name</FormLabel>
                       <Input
@@ -371,12 +351,20 @@ const SingleDoctorPage = () => {
                   </Box>
                   <Box>
                     <FormLabel>Select the Time</FormLabel>
-                    <Input
+                    {/* <Input
                       type="time"
                       value={bookingform.time}
                       name="time"
                       onChange={handleFormChange}
-                    />
+                    /> */}
+                   <Select name="time"  onChange={handleFormChange}>
+                   <option value={''}>Select Time Slot</option>
+                    {allowedTimeSlots.map((slot) => (
+                    <option key={slot} value={slot}>
+                    {slot}
+                    </option>
+                    ))}
+                   </Select>
                   </Box>
 
                   <Box>
@@ -409,13 +397,13 @@ const SingleDoctorPage = () => {
           bg={'#222566'}
           _hover={{
             bg: '#3879E9',
-          }}>Submit</Button>
+          }}>Book Now</Button>
                 </ModalFooter>
               </ModalContent>
             </form>
           </Modal>
           </Box>
-                      </Flex>
+         </Flex>
       
     </>
   );

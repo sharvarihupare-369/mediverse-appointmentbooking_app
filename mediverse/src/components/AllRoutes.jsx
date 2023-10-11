@@ -32,7 +32,7 @@ const AllRoutes = () => {
     <div>
       <Routes>
         <Route path='/admin' element={<Admin/>} />
-        <Route path='/' element={<Home/>} />
+        <Route path='/' element={ <Home/>} />
         <Route path='/contact' element={<Contact/>} />
         <Route path='/about' element={<About/>} />
         <Route path='/signup' element={<SignupsForms/>} />
