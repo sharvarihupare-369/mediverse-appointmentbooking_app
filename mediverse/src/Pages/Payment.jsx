@@ -96,14 +96,60 @@ const Payment = () => {
 
     //  if(upi){
     //   setStatus(true)
-    //  }
+    //  }'
 
-     if(status){
-        setTimeout(()=>{
-          navigate('/patients')
-        },4000)
-     }
+    if(status){
+      setTimeout(()=>{
+        navigate('/patients')
+      },4000)
+   }
 
+
+    const makeScript = (url) => {
+      return new Promise((resolve)=>{
+        const script = document.createElement("script")
+        script.src = url;
+        script.onload = () => {
+          resolve(true)
+        }
+        script.onerror = () =>{
+          resolve(false)
+        }
+        document.body.appendChild(script)
+      })
+    }
+ 
+    const handlePayment = async() => {
+      let response = await makeScript('https://checkout.razorpay.com/v1/checkout.js')
+      if(!response){
+        toast({
+          title: 'Something went wrong',
+          description: 'Please try again!',
+          status: 'error',
+          duration: 4000,
+          isClosable: true,
+          position: 'top',
+        });
+        return;
+      }
+      const options = {
+        key : "rzp_test_U7guy5cpCvpcZA",
+        currency : 'INR',
+        amount : price * 100,
+        name : "Mediverse",
+        description: 'Payment successfully Done!',
+        handler : (res) => {
+          if(res.razorpay_payment_id){
+              navigate('/patients')
+          }
+        }
+      } 
+      const paymentObject = new window.Razorpay(options)
+      paymentObject.open()
+    }
+  
+  
+  
 
   return (
     <Flex mt="100px" justifyContent={{base:"center" , sm :"center" , md:"space-around" , lg:"space-around" ,xl:"space-around" , "2xl":"space-around"}} direction={{base:"column", sm:"column" , md:"row" , lg:"row" , xl : "row" , "2xl" : "row"}}>
@@ -114,9 +160,9 @@ const Payment = () => {
 
       <Box w="50%" m="30px" >
         <Box>
-          <Heading as={"h2"} size={"lg"} mb="10px" color={"#222566"}>Appointment Fee : {price} </Heading>
+          <Heading as={"h2"} size={"lg"} mb="10px" color={"#222566"}>Appointment Fee : ₹ {price} </Heading>
         </Box>
-        <form onSubmit={handleSubmitForm}>
+        {/* <form onSubmit={handleSubmitForm}> */}
         <FormLabel p="10px" color={"white"} bg={'#222566'}>Credit/Debit Card</FormLabel>
 
         <Box mb="10px">
@@ -180,7 +226,7 @@ const Payment = () => {
         </ModalContent>
       </Modal>
       :  <Button color={'white'}
-      onClick={onOpen}
+      onClick={handlePayment}
       type='submit'
         bg={'#222566'}
         _hover={{
@@ -188,7 +234,7 @@ const Payment = () => {
           }}>Pay Now</Button>
        }
       </Box>
-            </form>
+            {/* </form> */}
       <Box mt="30px">
       <FormLabel  p="10px" color={"white"} bg={'#3879E9'}>UPI</FormLabel>
       <Box >
