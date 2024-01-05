@@ -40,6 +40,7 @@ const PatientAppointments = () => {
     // const { bookingformPatient } = useContext(SearchContext);
 
   const [users, setUsers] = useState([]);
+  const [deletedUser,setDeletedUser] = useState(Array(users.length).fill(false))
   //   const [patient,setPatient] = useState({})
   const {
     loading,
@@ -100,7 +101,8 @@ const PatientAppointments = () => {
       </Heading>
       <Flex  mt="20px" justifyContent={"space-between"} >
         <Box >
-          {users.map(user => {
+          {users.map((user,ind) => {  
+            {/* console.log(user.id) */}
             return (
               <HStack mt="40px" m="30px" p="10px" boxShadow= "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px">
                 <Image
